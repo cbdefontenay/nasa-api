@@ -1,14 +1,18 @@
 #![allow(non_snake_case)]
 
+mod components;
+
 use dioxus::prelude::*;
 use dioxus_logger::tracing;
 
 #[derive(Clone, Routable, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+#[rustfmt::skip]
 enum Route {
-    #[route("/")]
-    Home {},
-    #[route("/blog/:id")]
-    Blog { id: i32 },
+    #[layout(NavBar)]
+        #[route("/")]
+        Home {},
+        #[route("/about")]
+        About {},
 }
 
 fn main() {
@@ -25,51 +29,25 @@ fn App() -> Element {
 }
 
 #[component]
-fn Blog(id: i32) -> Element {
+fn Home() -> Element {
     rsx! {
-        Link { to: Route::Home {}, "Go to counter" }
-        "Blog post {id}"
+        div {
+            h1{class: "absolute h-screen w-full flex items-center justify-center", "Hallo"}
+        }
     }
 }
 
 #[component]
-fn Home() -> Element {
-    let mut count = use_signal(|| 0);
-    let mut text = use_signal(|| String::from("..."));
-
+fn NavBar() -> Element {
     rsx! {
-        Link {
-            to: Route::Blog {
-                id: count()
-            },
-            "Go to blog"
-        }
-        div {
-            h1 { "High-Five counter: {count}" }
-            button { onclick: move |_| count += 1, "Up high!" }
-            button { onclick: move |_| count -= 1, "Down low!" }
-            button {
-                onclick: move |_| async move {
-                    if let Ok(data) = get_server_data().await {
-                        tracing::info!("Client received: {}", data);
-                        text.set(data.clone());
-                        post_server_data(data).await.unwrap();
-                    }
-                },
-                "Get Server Data"
-            }
-            p { "Server data: {text}"}
-        }
+        components::nav_bar_component::NavBarComponent{}
+         Outlet::<Route> {}
     }
 }
 
-#[server(PostServerData)]
-async fn post_server_data(data: String) -> Result<(), ServerFnError> {
-    tracing::info!("Server received: {}", data);
-    Ok(())
-}
-
-#[server(GetServerData)]
-async fn get_server_data() -> Result<String, ServerFnError> {
-    Ok("Hello from the server!".to_string())
+#[component]
+fn About() -> Element {
+    rsx!{
+        components::about_component::AboutComponent {}
+    }
 }
