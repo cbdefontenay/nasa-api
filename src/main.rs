@@ -31,8 +31,8 @@ fn App() -> Element {
 #[component]
 fn Home() -> Element {
     rsx! {
-        div {
-            h1{class: "absolute h-screen w-full flex items-center justify-center", "Hallo"}
+        div {class: "absolute h-screen w-full flex items-center justify-center",
+            components::reqwester_component::Reqwester{}
         }
     }
 }
@@ -47,7 +47,7 @@ fn NavBar() -> Element {
 
 #[component]
 fn About() -> Element {
-    rsx!{
+    rsx! {
         components::about_component::AboutComponent {}
     }
 }

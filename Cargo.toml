@@ -13,6 +13,8 @@ dioxus = { version = "0.5", features = ["fullstack", "router"] }
 
 # Debug
 dioxus-logger = "0.5.1"
+reqwest = "0.12.5"
+regex = "0.2.11"
 
 [features]
 default = []

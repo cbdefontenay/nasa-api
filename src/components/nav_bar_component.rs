@@ -13,32 +13,25 @@ pub fn NavBarComponent() -> Element {
                     class: "flex items-center justify-between h-16",
                     // Logo
                     div {
-                        class: "flex-shrink-0 text-white",
-                        "Your Logo"
+                        Link {
+                            class: "flex-shrink-0 text-white",
+                            to: "/about",
+                            "Cyprien"
+                        },
                     },
                     // Navbar items (aligned horizontally)
                     div {
                         class: "flex space-x-4",
                         Link {
                             class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium",
-                            to: "/",
-                            "Home"
+                            to: "/about",
+                            "Über"
                         },
                         Link {
                             class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium",
                             to: "/about",
-                            "About"
+                            "Kontakt"
                         },
-                        a {
-                            class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium",
-                            href: "#",
-                            "Services"
-                        },
-                        a {
-                            class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium",
-                            href: "#",
-                            "Contact"
-                        }
                     }
                 }
             }
