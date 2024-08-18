@@ -11,8 +11,10 @@ enum Route {
     #[layout(NavBar)]
         #[route("/")]
         Home {},
-        #[route("/about")]
+        #[route("/a-propos")]
         About {},
+        #[route("/ma-liste")]
+        MyList {},
 }
 
 fn main() {
@@ -31,17 +33,22 @@ fn App() -> Element {
 #[component]
 fn Home() -> Element {
     rsx! {
-        div {class: "absolute h-screen w-full flex items-center justify-center",
-            components::reqwester_component::Reqwester{}
-        }
+        components::home_component::HomeComponent{}
     }
 }
 
 #[component]
 fn NavBar() -> Element {
     rsx! {
-        components::nav_bar_component::NavBarComponent{}
+        components::nav_bar_component::NavbarComponent{}
          Outlet::<Route> {}
+    }
+}
+
+#[component]
+fn MyList() -> Element {
+    rsx! {
+        components::my_list_component::MyListComponent{}
     }
 }
 

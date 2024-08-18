@@ -3,35 +3,39 @@
 use dioxus::prelude::*;
 
 #[component]
-pub fn NavBarComponent() -> Element {
+pub fn NavbarComponent() -> Element {
     rsx! {
-         nav {
-            class: "bg-gray-800 p-4",
+        nav {
+            class: "bg-teal-900 p-4",
             div {
-                class: "max-w-7xl mx-auto px-2 sm:px-6 lg:px-8",
+                class: "container mx-auto flex justify-between items-center",
+
+                // Logo or brand name
+                Link {
+                    to: "/",
+                    class: "hidden md:block text-white text-2xl font-bold",
+                    "ελληνικά - Grec"
+                }
+
+                // Nav items
                 div {
-                    class: "flex items-center justify-between h-16",
-                    // Logo
-                    div {
-                        Link {
-                            class: "flex-shrink-0 text-white",
-                            to: "/about",
-                            "Cyprien"
-                        },
-                    },
-                    // Navbar items (aligned horizontally)
-                    div {
-                        class: "flex space-x-4",
-                        Link {
-                            class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium",
-                            to: "/about",
-                            "Über"
-                        },
-                        Link {
-                            class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium",
-                            to: "/about",
-                            "Kontakt"
-                        },
+                    class: "flex space-x-4",
+                    Link {
+                        to: "/",
+                        class: "block md:hidden text-white text-lg hover:text-blue-200",
+                        "Accueil"
+                    }
+
+                    Link {
+                        to: "/ma-liste",
+                        class: "text-white text-lg hover:text-blue-200",
+                        "Ma liste"
+                    }
+
+                    Link {
+                        to: "/a-propos",
+                        class: "text-white text-lg hover:text-blue-200",
+                        "A propos"
                     }
                 }
             }
