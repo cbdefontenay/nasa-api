@@ -10,32 +10,30 @@ pub fn NavbarComponent() -> Element {
             div {
                 class: "container mx-auto flex justify-between items-center",
 
-                // Logo or brand name
                 Link {
                     to: "/",
                     class: "hidden md:block text-white text-2xl font-bold",
-                    "ελληνικά - Grec"
+                    "Die Welt von Anno"
                 }
 
-                // Nav items
                 div {
                     class: "flex space-x-4",
                     Link {
                         to: "/",
                         class: "block md:hidden text-white text-lg hover:text-blue-200",
-                        "Accueil"
+                        "Startseite"
                     }
 
                     Link {
-                        to: "/ma-liste",
+                        to: "/posts",
                         class: "text-white text-lg hover:text-blue-200",
-                        "Ma liste"
+                        "Posts"
                     }
 
                     Link {
-                        to: "/a-propos",
+                        to: "/ueber",
                         class: "text-white text-lg hover:text-blue-200",
-                        "A propos"
+                        "Über"
                     }
                 }
             }

@@ -11,10 +11,10 @@ enum Route {
     #[layout(NavBar)]
         #[route("/")]
         Home {},
-        #[route("/a-propos")]
+        #[route("/ueber")]
         About {},
-        #[route("/ma-liste")]
-        MyList {},
+        #[route("/posts")]
+        Posts {},
 }
 
 fn main() {
@@ -46,15 +46,15 @@ fn NavBar() -> Element {
 }
 
 #[component]
-fn MyList() -> Element {
+fn About() -> Element {
     rsx! {
-        components::my_list_component::MyListComponent{}
+        components::about_component::AboutComponent {}
     }
 }
 
 #[component]
-fn About() -> Element {
+fn Posts() -> Element {
     rsx! {
-        components::about_component::AboutComponent {}
+        components::posts_component::PostsComponent {}
     }
 }
