@@ -1,36 +1,44 @@
-#![allow(non_snake_case)]
-
 use dioxus::prelude::*;
-use manganis::*;
-use regex::Regex;
+use reqwest;
+use scraper::{Html, Selector};
+use log::info;
 
 #[component]
 pub fn PostsComponent() -> Element {
-    rsx! {
-        div {
-            h1 { "Posts" }
+    let url = "https://www.anno-union.com/blogs/";
+
+    let future = use_resource(move || async move {
+        let request = reqwest::get(url).await;
+        match request {
+            Ok(response) => {
+                let body = response.text().await;
+                match body {
+                    Ok(body_text) => {
+                        info!("Body Text: {}", body_text);
+                        let document = Html::parse_document(&body_text);
+                        let title_selector = Selector::parse(".col-md-4 p").unwrap();
+                        let title = document
+                            .select(&title_selector)
+                            .next()
+                            .map(|element| element.inner_html());
+                        info!("Extracted Title: {:?}", title);
+                        Ok(title)
+                    }
+                    Err(err) => Err(err.to_string()),
+                }
+            }
+            Err(err) => Err(err.to_string()),
         }
+    });
+
+    match &*future.read_unchecked() {
+        Some(Ok(Some(title))) => rsx! {
+            div {
+                h1 {class:"text-4xl flex w-full h-screen items-center justify-center", "{title}" }
+            }
+        },
+        Some(Ok(None)) => rsx! { div { "No title found." } },
+        Some(Err(_)) => rsx! { div { "Loading data failed" } },
+        None => rsx! { div { "Loading..." } },
     }
-}
-
-#[server]
-async fn fetch_articles() -> Result<String, ServerFnError> {
-    let url = "".to_string();
-
-    let response = reqwest::get(&url).await?;
-    let status = response.status();
-
-    let html_body = response.text().await?;
-
-    let article_regex = Regex::new(r#"<div\s+class="section-post-filter-item"\s+data-type="post"\s+data-tags="anno-117-en,union-update-en"\s+data-year="2024"\s+data-month="08"\s+data-day="07"\s+data-id="19683"\s+style="">"#)?;
-
-    if status == 200 {
-        let article_regex_match = article_regex.captures(&html_body);
-
-        for article in article_regex_match.iter(){
-
-        }
-    }
-
-    Ok(String::from("Daten wurden leider nicht gefunden..."))
 }
