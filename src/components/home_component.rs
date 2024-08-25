@@ -1,25 +1,74 @@
-#![allow(non_snake_case)]
-
 use dioxus::prelude::*;
+use reqwest::Client;
+use serde::{Deserialize, Serialize};
 use manganis::*;
+
+#[derive(Debug, Deserialize, Serialize)]
+pub struct Photo {
+    explanation: String,
+    title: String,
+    hdurl: String,
+    date: String,
+}
 
 #[component]
 pub fn HomeComponent() -> Element {
-    const ZEUS: ImageAsset = mg!(image("./assets/zeus.jpg"));
+    let response = use_signal(|| None::<Photo>);
+
+    use_effect(move || {
+        spawn({
+            let mut response = response.clone();
+            async move {
+                match nasa_api().await {
+                    Ok(data) => {
+                        log::info!("Data fetched successfully!");
+                        response.set(Some(data));
+                    }
+                    Err(err) => {
+                        log::info!("Data failed to be fetched! {:?}", err);
+                        response.set(None);
+                    }
+                }
+            }
+        });
+        (|| ())()
+    });
+
+    let photo = response.read_unchecked();
+    let photo = photo.as_ref();
 
     rsx! {
-       div {
-            class: "h-full w-full grid grid-cols-1 md:grid-cols-2 gap-4 items-center justify-center py-10 bg-slate-300",
-            img {
-                class: "mx-auto w-3/4 md:w-1/2 h-auto rounded-lg shadow-lg",
-                src: "{ZEUS}",
-                alt:"Zeus et Athéna"
-            }
-            div {
-                class: "flex flex-col items-center text-center p-4",
-                h1 { class: "text-3xl md:text-4xl font-bold font-serif", "Apprends le Grec maintenant!" }
-                h3 { class: "text-lg md:text-xl font-bold italic mt-2", "Μάθε ελληνικά τώρα!" }
+        div { class: "flex flex-col items-center justify-center w-full h-full bg-stone-900 pt-14 pb-10",
+            h1 { class: "text-4xl font-bold mb-10 text-slate-200", "NASA Picture of the Day" }
+            if let Some(photo) = photo {
+                div { class: "flex flex-row items-start justify-center w-3/4 max-w-4xl",
+                    img { class: "rounded-lg shadow-lg mb-4 mt-6 mr-20",
+                        src: "{photo.hdurl}",
+                        style: "max-width: 400px; height: 400px;",
+                        alt: "picture of cosmos"
+                    }
+                    div { class: "flex flex-col text-gray-200",
+                        h2 { class: "text-2xl font-semibold mb-4", "{photo.title}" }
+                        p { class: "text-base text-justify", "{photo.explanation}" }
+                    }
+                }
+            } else {
+                p { class: "text-lg text-red-500", "loading data..." }
             }
         }
     }
+}
+
+#[server]
+pub async fn nasa_api() -> Result<Photo, ServerFnError> {
+    let client = Client::new();
+    let url = "https://api.nasa.gov/planetary/apod?api_key=FkPkN10hq7HCUJdK31YREnGXavKLyMALK9ovSFfU";
+
+    let response = client.get(url)
+        .send()
+        .await?;
+
+    let data: Photo = response.json().await?;
+
+    Ok(data)
 }

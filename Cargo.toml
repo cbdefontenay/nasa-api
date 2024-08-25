@@ -13,12 +13,14 @@ dioxus = { version = "0.5", features = ["fullstack", "router"] }
 
 # Debug
 dioxus-logger = "0.5.1"
-reqwest = "0.12.5"
+reqwest = { version = "0.12.5", features = ["json"] }
 regex = "1.10.6"
 manganis = "0.2.2"
 scraper = "0.20.0"
 getrandom = { version = "0.2.15", features = ["js"] }
 log = "0.4.22"
+serde_json = "1.0.124"
+rand = "0.8.5"
 
 [features]
 default = []

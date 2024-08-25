@@ -979,10 +979,12 @@ dependencies = [
  "getrandom",
  "log",
  "manganis",
+ "rand",
  "regex",
  "reqwest 0.12.5",
  "scraper",
  "serde",
+ "serde_json",
 ]
 
 [[package]]

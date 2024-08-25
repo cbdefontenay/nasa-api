@@ -6,14 +6,14 @@ use dioxus::prelude::*;
 pub fn NavbarComponent() -> Element {
     rsx! {
         nav {
-            class: "bg-teal-900 p-4",
+            class: "bg-black p-4",
             div {
-                class: "container mx-auto flex justify-between items-center",
+                class: "bg-black container mx-auto flex justify-between items-center",
 
                 Link {
                     to: "/",
                     class: "hidden md:block text-white text-2xl font-bold",
-                    "Die Welt von Anno"
+                    "NASA API Discovery"
                 }
 
                 div {
@@ -25,15 +25,15 @@ pub fn NavbarComponent() -> Element {
                     }
 
                     Link {
-                        to: "/posts",
+                        to: "/mars-missions",
                         class: "text-white text-lg hover:text-blue-200",
-                        "Posts"
+                        "Mars"
                     }
 
                     Link {
                         to: "/ueber",
                         class: "text-white text-lg hover:text-blue-200",
-                        "Über"
+                        "Rover"
                     }
                 }
             }

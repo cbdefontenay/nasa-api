@@ -13,12 +13,11 @@ enum Route {
         Home {},
         #[route("/ueber")]
         About {},
-        #[route("/posts")]
-        Posts {},
+        #[route("/mars-missions")]
+        Mars {},
 }
 
 fn main() {
-    // Init logger
     dioxus_logger::init(tracing::Level::INFO).expect("failed to init logger");
     tracing::info!("starting app");
     launch(App);
@@ -53,8 +52,8 @@ fn About() -> Element {
 }
 
 #[component]
-fn Posts() -> Element {
+fn Mars() -> Element {
     rsx! {
-        components::posts_component::PostsComponent {}
+        components::mars_mission_component::MarsMissionComponent {}
     }
 }
