@@ -1,7 +1,6 @@
 use dioxus::prelude::*;
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
-use manganis::*;
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Photo {

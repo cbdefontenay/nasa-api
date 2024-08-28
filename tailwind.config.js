@@ -5,6 +5,9 @@ module.exports = {
   content: ["./src/**/*.{rs,html,css}", "./dist/**/*.html"],
   theme: {
     extend: {},
+    fontFamily: {
+      "strait": ["Strait-Regular", "strait"],
+    }
   },
   plugins: [],
 };

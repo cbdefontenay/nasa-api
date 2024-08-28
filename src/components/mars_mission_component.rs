@@ -57,14 +57,35 @@ pub fn MarsMissionComponent() -> Element {
     });
 
 
-    let random_index = rand::thread_rng().gen_range(0..=6);
-    let random_index_two = rand::thread_rng().gen_range(0..=6);
+    let random_index = rand::thread_rng().gen_range(0..=10);
+    let random_index_two = rand::thread_rng().gen_range(10..=37);
 
     rsx! {
+         div {
+            class: "h-screen overflow-hidden",
+
+            video {
+                class: "absolute top-0 left-0 w-full h-full object-cover",
+                autoplay:"true",
+                muted:"true",
+                r#loop: "true",
+                src: "https://cdn.pixabay.com/video/2022/12/15/143020-781982535_large.mp4",
+            }
+            div {
+                class: "relative z-10 flex items-center justify-center h-full",
+                h1 {
+                    class: "text-white text-5xl font-bold font-strait",
+                    "Go on exploration on Mars."
+                }
+            }
+        }
         div { class: "bg-stone-900 w-full h-full flex flex-col items-center justify-center text-slate-200",
-            h1 {class:"text-2xl font-bold font-serif mt-10 mb-10", "NASA Mars Photos"}
-            if let Some(photo) = response.get(random_index) {
+            h1 {class:"text-2xl font-bold font-strait mt-10 mb-10", "NASA Mars Photos"}
+            div {class: "grid grid-rows-2 sm:grid-rows-2 gap-4",
+             div {
+                 if let Some(photo) = response.get(random_index) {
                 div {
+                        class: "flex flex-col items-center",
                     h2 { "{photo.rover.name}"}
                     p { "Date: {photo.earth_date}"}
                     img { src: "{photo.img_src}", alt: "Picture of Mars",
@@ -74,6 +95,7 @@ pub fn MarsMissionComponent() -> Element {
             }
             if let Some(photo) = response.get(random_index_two) {
                 div {
+                        class: "flex flex-col items-center",
                     h2 { "{photo.rover.name}"}
                     p { "Date: {photo.earth_date}"}
                     img { src: "{photo.img_src}", alt: "Picture of Mars",
@@ -83,8 +105,10 @@ pub fn MarsMissionComponent() -> Element {
             } else {
                 p {"Data are being loaded, please wait a moment..."}
             }
+            }
         }
     }
+            }
 }
 
 #[server]

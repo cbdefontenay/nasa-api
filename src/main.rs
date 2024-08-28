@@ -32,7 +32,8 @@ fn App() -> Element {
 #[component]
 fn Home() -> Element {
     rsx! {
-        components::home_component::HomeComponent{}
+        components::header_component::HeaderComponent{}
+        // components::home_component::HomeComponent{}
     }
 }
 
