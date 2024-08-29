@@ -6,7 +6,7 @@ use dioxus::prelude::*;
 pub fn NavbarComponent() -> Element {
     rsx! {
         nav {
-            class: "absolute top-0 left-0 w-full bg-black bg-opacity-50 p-4 z-20", // Use absolute positioning
+            class: "absolute top-0 left-0 w-full bg-black bg-opacity-50 p-4 z-20 font-strait",
             div {
                 class: "container mx-auto flex justify-between items-center",
 

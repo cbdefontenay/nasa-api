@@ -79,37 +79,34 @@ pub fn MarsMissionComponent() -> Element {
                 }
             }
         }
-        div { class: "bg-stone-900 w-full h-full flex flex-col items-center justify-center text-slate-200",
+       div { class: "bg-stone-900 w-full h-full flex flex-col items-center justify-center text-slate-200",
             h1 {class:"text-2xl font-bold font-strait mt-10 mb-10", "NASA Mars Photos"}
-            div {class: "grid grid-rows-2 sm:grid-rows-2 gap-4",
-             div {
-                 if let Some(photo) = response.get(random_index) {
-                div {
-                        class: "flex flex-col items-center",
-                    h2 { "{photo.rover.name}"}
-                    p { "Date: {photo.earth_date}"}
-                    img { src: "{photo.img_src}", alt: "Picture of Mars",
-                        class:"rounded-lg shadow-md shadow-slate-600 mb-10",
-                        style: "max-width: 500px; height: 500px;", }
+            div {class: "flex gap-6",
+                if let Some(photo) = response.get(random_index) {
+                    div {class: "flex flex-col items-center",
+                        h2 { "{photo.rover.name}"}
+                        p { "Date: {photo.earth_date}"}
+                        img { src: "{photo.img_src}", alt: "Picture of Mars",
+                            class:"rounded-lg shadow-md shadow-slate-600 mb-10",
+                            style: "max-width: 500px; height: 500px;", }
+                    }
                 }
-            }
-            if let Some(photo) = response.get(random_index_two) {
-                div {
-                        class: "flex flex-col items-center",
-                    h2 { "{photo.rover.name}"}
-                    p { "Date: {photo.earth_date}"}
-                    img { src: "{photo.img_src}", alt: "Picture of Mars",
-                        class:"rounded-lg shadow-md shadow-slate-600 mb-10",
-                        style: "max-width: 500px; height: 500px;", }
+                if let Some(photo) = response.get(random_index_two) {
+                    div {class: "flex flex-col items-center",
+                        h2 { "{photo.rover.name}"}
+                        p { "Date: {photo.earth_date}"}
+                        img { src: "{photo.img_src}", alt: "Picture of Mars",
+                            class:"rounded-lg shadow-md shadow-slate-600 mb-10",
+                            style: "max-width: 500px; height: 500px;", }
+                    }
+                } else {
+                    p {"Data are being loaded, please wait a moment..."}
                 }
-            } else {
-                p {"Data are being loaded, please wait a moment..."}
-            }
             }
         }
     }
-            }
 }
+
 
 #[server]
 pub async fn nasa_api() -> Result<Vec<Photo>, ServerFnError> {

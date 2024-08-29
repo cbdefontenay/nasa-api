@@ -1,5 +1,6 @@
 use dioxus::prelude::*;
 use reqwest::Client;
+use manganis::*;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -37,8 +38,8 @@ pub fn HomeComponent() -> Element {
     let photo = photo.as_ref();
 
     rsx! {
-        div { class: "flex flex-col items-center justify-center w-full h-full bg-stone-900 pt-14 pb-10",
-            h1 { class: "text-4xl font-bold mb-10 text-slate-200", "NASA Picture of the Day" }
+        div { class: "flex flex-col items-center justify-center w-full h-full bg-stone-900 pt-14 pb-10 font-strait",
+            h1 { class: "text-4xl font-bold mb-10 text-slate-200", "Picture of the Day" }
             if let Some(photo) = photo {
                 div { class: "flex flex-row items-start justify-center w-3/4 max-w-4xl",
                     img { class: "rounded-lg shadow-lg mb-4 mt-6 mr-20",
