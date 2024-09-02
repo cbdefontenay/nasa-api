@@ -6,7 +6,7 @@ use manganis::*;
 
 #[component]
 pub fn HeaderComponent() -> Element {
-    const LOGO: ImageAsset = mg!(image("./assets/logo.webp"));
+    const LOGO: ImageAsset = mg!(image("./assets/logo.png"));
 
     rsx! {
         div {
