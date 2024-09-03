@@ -111,7 +111,7 @@ pub fn MarsMissionComponent() -> Element {
 #[server]
 pub async fn nasa_api() -> Result<Vec<Photo>, ServerFnError> {
     let client = Client::new();
-    let url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=FkPkN10hq7HCUJdK31YREnGXavKLyMALK9ovSFfU";
+    let url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY";
 
     let response = client.get(url)
         .send()
