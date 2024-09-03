@@ -62,7 +62,7 @@ pub fn HomeComponent() -> Element {
 #[server]
 pub async fn nasa_api() -> Result<Photo, ServerFnError> {
     let client = Client::new();
-    let url = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY";
+    let url = "https://api.nasa.gov/planetary/apod?api_key=FkPkN10hq7HCUJdK31YREnGXavKLyMALK9ovSFfU";
 
     let response = client.get(url)
         .send()
