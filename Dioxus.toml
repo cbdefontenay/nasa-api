@@ -16,8 +16,8 @@ asset_dir = "assets"
 [web.app]
 
 # HTML title tag content
-title = "dioxusproject"
-base_path = "dioxusproject"
+title = "nasa-api"
+base_path = "nasa-api"
 
 [web.watcher]
 
