@@ -8,7 +8,7 @@ name = "dioxusproject"
 default_platform = "fullstack"
 
 # `build` & `serve` dist path
-out_dir = "docs"
+out_dir = "dist"
 
 # resource (assets) file folder
 asset_dir = "assets"
@@ -16,8 +16,7 @@ asset_dir = "assets"
 [web.app]
 
 # HTML title tag content
-title = "nasa-api"
-base_path = "nasa-api"
+title = "Nasa-Api"
 
 [web.watcher]
 
@@ -41,4 +40,4 @@ script = []
 
 # Javascript code file
 # serve: [dev-server] only
-script = ["/dioxusproject/docs/assets/dioxus/dioxusproject.js"]
+script = []

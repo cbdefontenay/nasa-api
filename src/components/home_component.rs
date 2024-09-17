@@ -2,6 +2,8 @@ use dioxus::prelude::*;
 use reqwest::Client;
 use manganis::*;
 use serde::{Deserialize, Serialize};
+use env::API_KEY;
+use crate::components::env;
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Photo {
@@ -62,7 +64,7 @@ pub fn HomeComponent() -> Element {
 #[server]
 pub async fn nasa_api() -> Result<Photo, ServerFnError> {
     let client = Client::new();
-    let url = "https://api.nasa.gov/planetary/apod?api_key=FkPkN10hq7HCUJdK31YREnGXavKLyMALK9ovSFfU";
+    let url = format!("https://api.nasa.gov/planetary/apod?api_key={}", API_KEY);
 
     let response = client.get(url)
         .send()

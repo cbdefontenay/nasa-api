@@ -4,6 +4,8 @@ use dioxus::prelude::*;
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
 use rand::Rng;
+use serde_json::Value;
+use crate::components::env;
 
 #[derive(Deserialize, Serialize, Debug)]
 pub struct Photo {
@@ -35,22 +37,38 @@ struct Rover {
 
 #[component]
 pub fn MarsMissionComponent() -> Element {
-    let response = use_signal(Vec::<Photo>::new);
+    let mut response = use_signal(Vec::<Photo>::new);
 
     use_effect(move || {
-        spawn({
-            let mut response = response.clone();
-            async move {
-                match nasa_api().await {
-                    Ok(data) => {
-                        log::info!("Data fetched");
-                        response.set(data);
-                    }
-                    Err(err) => {
-                        log::info!("Data not fetched");
-                        response.set(Vec::new());
+        spawn(async move {
+            let client = Client::new();
+            let url = format!(
+                "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key={}",
+                env::API_KEY);
+
+            match client.get(&url).send().await {
+                Ok(resp) => {
+                    match resp.text().await {
+                        Ok(text) => {
+                            match serde_json::from_str::<Value>(&text) {
+                                Ok(data) => {
+                                    if let Some(photos) = data["photos"].as_array() {
+                                        match serde_json::from_value::<Vec<Photo>>(Value::Array(photos.to_vec()))
+                                        {
+                                            Ok(photos) => response.set(photos),
+                                            Err(e) => eprintln!("Error deserializing photos: {}", e)
+                                        }
+                                    } else {
+                                        eprintln!("Error: 'photos' field not found in JSON data...")
+                                    }
+                                }
+                                Err(e) => eprintln!("Error parsing JSON: {}", e),
+                            }
+                        }
+                        Err(e) => eprintln!("Error reading response text: {}", e),
                     }
                 }
+                Err(e) => eprintln!("Error sending request: {}", e),
             }
         });
         (|| ())()
@@ -105,20 +123,4 @@ pub fn MarsMissionComponent() -> Element {
             }
         }
     }
-}
-
-
-#[server]
-pub async fn nasa_api() -> Result<Vec<Photo>, ServerFnError> {
-    let client = Client::new();
-    let url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=FkPkN10hq7HCUJdK31YREnGXavKLyMALK9ovSFfU";
-
-    let response = client.get(url)
-        .send()
-        .await?;
-
-    let data: serde_json::Value = serde_json::from_str(&response.text().await?)?;
-    let photos: Vec<Photo> = serde_json::from_value(data["photos"].clone())?;
-
-    Ok(photos)
 }
