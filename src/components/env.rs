@@ -1,1 +1,0 @@
-pub const API_KEY: &str = "FkPkN10hq7HCUJdK31YREnGXavKLyMALK9ovSFfU";
