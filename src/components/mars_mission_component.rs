@@ -75,8 +75,9 @@ pub fn MarsMissionComponent() -> Element {
     });
 
 
-    let random_index = rand::thread_rng().gen_range(0..=10);
-    let random_index_two = rand::thread_rng().gen_range(10..=37);
+    let random_index = rand::thread_rng().gen_range(0..=50);
+    let random_index_two = rand::thread_rng().gen_range(45..=210);
+    let random_index_three = rand::thread_rng().gen_range(105..=147);
 
     rsx! {
          div {
@@ -110,6 +111,17 @@ pub fn MarsMissionComponent() -> Element {
                     }
                 }
                 if let Some(photo) = response.get(random_index_two) {
+                    div {class: "flex flex-col items-center",
+                        h2 { "{photo.rover.name}"}
+                        p { "Date: {photo.earth_date}"}
+                        img { src: "{photo.img_src}", alt: "Picture of Mars",
+                            class:"rounded-lg shadow-md shadow-slate-600 mb-10",
+                            style: "max-width: 500px; height: 500px;", }
+                    }
+                } else {
+                    p {"Data are being loaded, please wait a moment..."}
+                }
+                if let Some(photo) = response.get(random_index_three) {
                     div {class: "flex flex-col items-center",
                         h2 { "{photo.rover.name}"}
                         p { "Date: {photo.earth_date}"}

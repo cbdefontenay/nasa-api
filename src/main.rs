@@ -13,8 +13,10 @@ enum Route {
         Home {},
         #[route("/ueber")]
         About {},
-        #[route("/mars-missions")]
+        #[route("/planets/mars-missions")]
         Mars {},
+        #[route("/planets/sun")]
+        Sun {},
 }
 
 fn main() {
@@ -56,5 +58,12 @@ fn About() -> Element {
 fn Mars() -> Element {
     rsx! {
         components::mars_mission_component::MarsMissionComponent {}
+    }
+}
+
+#[component]
+fn Sun() -> Element {
+    rsx! {
+        components::sun_component::SunComponent {}
     }
 }
