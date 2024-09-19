@@ -57,7 +57,7 @@ pub fn HomeComponent() -> Element {
                     div {
                         class: "flex flex-col text-gray-200",
                         h2 {
-                            class: "text-2xl font-semibold mb-4",
+                            class: "text-2xl text-blue-500 font-semibold mb-4",
                             "{photo.title}"
                         }
                         p {
