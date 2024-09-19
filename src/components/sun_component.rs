@@ -8,6 +8,7 @@ use serde_json::Value;
 pub fn SunComponent() -> Element {
     let title = use_signal(String::new);
     let description = use_signal(String::new);
+    let header = "Explore the Sun like never before";
     const SUN: ImageAsset = mg!(image("./assets/sun.webp"));
 
     use_effect(move || {
@@ -48,8 +49,8 @@ pub fn SunComponent() -> Element {
                 class: "absolute inset-0 w-full h-full md:h-screen flex flex-col items-start justify-center pl-8 pr-4",
 
                 h1 {
-                    class: "text-white text-3xl font-bold mb-4 font-sans ml-10",
-                    "Explore the Sun Like Never Before"
+                    class: "text-white text-3xl font-bold mb-4 font-amsterdam ml-10",
+                    "{header}"
                 }
             }
         }

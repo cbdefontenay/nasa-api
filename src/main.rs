@@ -11,7 +11,7 @@ enum Route {
     #[layout(NavBar)]
         #[route("/")]
         Home {},
-        #[route("/ueber")]
+        #[route("/about")]
         About {},
         #[route("/planets/mars-missions")]
         Mars {},

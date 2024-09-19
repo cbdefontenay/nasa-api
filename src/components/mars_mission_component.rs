@@ -5,7 +5,7 @@ use reqwest::Client;
 use serde::{Deserialize, Serialize};
 use rand::Rng;
 use serde_json::Value;
-use crate::components::env;
+use crate::components::{env, mars_explanation_component};
 
 #[derive(Deserialize, Serialize, Debug)]
 pub struct Photo {
@@ -39,12 +39,15 @@ struct Rover {
 pub fn MarsMissionComponent() -> Element {
     let mut response = use_signal(Vec::<Photo>::new);
 
+    let header = "Images from Mars, captured by Curiosity.";
+
     use_effect(move || {
         spawn(async move {
             let client = Client::new();
             let url = format!(
                 "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key={}",
-                env::API_KEY);
+                env::API_KEY
+            );
 
             match client.get(&url).send().await {
                 Ok(resp) => {
@@ -53,10 +56,9 @@ pub fn MarsMissionComponent() -> Element {
                             match serde_json::from_str::<Value>(&text) {
                                 Ok(data) => {
                                     if let Some(photos) = data["photos"].as_array() {
-                                        match serde_json::from_value::<Vec<Photo>>(Value::Array(photos.to_vec()))
-                                        {
+                                        match serde_json::from_value::<Vec<Photo>>(Value::Array(photos.to_vec())) {
                                             Ok(photos) => response.set(photos),
-                                            Err(e) => eprintln!("Error deserializing photos: {}", e)
+                                            Err(e) => eprintln!("Error deserializing photos: {}", e),
                                         }
                                     } else {
                                         eprintln!("Error: 'photos' field not found in JSON data...")
@@ -75,9 +77,11 @@ pub fn MarsMissionComponent() -> Element {
     });
 
 
-    let random_index = rand::thread_rng().gen_range(0..=50);
-    let random_index_two = rand::thread_rng().gen_range(45..=210);
-    let random_index_three = rand::thread_rng().gen_range(105..=147);
+    let random_index = rand::thread_rng().gen_range(6..=70);
+    let random_index_two = rand::thread_rng().gen_range(198..=210);
+    let random_index_three = rand::thread_rng().gen_range(345..=402);
+    let random_index_four = rand::thread_rng().gen_range(30..=45);
+    let random_index_five = rand::thread_rng().gen_range(400..=601);
 
     rsx! {
          div {
@@ -93,16 +97,21 @@ pub fn MarsMissionComponent() -> Element {
             div {
                 class: "relative z-10 flex items-center justify-center h-full",
                 h1 {
-                    class: "text-white text-5xl font-bold font-strait",
+                    class: "text-white text-5xl font-bold font-amsterdam",
                     "Go on exploration on Mars."
                 }
             }
         }
-       div { class: "bg-stone-900 w-full h-full flex flex-col items-center justify-center text-slate-200",
-            h1 {class:"text-2xl font-bold font-strait mt-10 mb-10", "NASA Mars Photos"}
-            div {class: "flex gap-6",
+
+
+        mars_explanation_component::MarsExplanationComponent{}
+
+        div { class: "bg-stone-900 overflow-hidden m-4 w-full h-full flex flex-col items-center justify-center text-slate-200",
+            h1 {class:"text-2xl font-bold font-amsterdam mt-10 mb-10", "{header}"}
+
+            div { class: "flex flex-wrap gap-6",
                 if let Some(photo) = response.get(random_index) {
-                    div {class: "flex flex-col items-center",
+                    div {class: "items-center",
                         h2 { "{photo.rover.name}"}
                         p { "Date: {photo.earth_date}"}
                         img { src: "{photo.img_src}", alt: "Picture of Mars",
@@ -111,7 +120,7 @@ pub fn MarsMissionComponent() -> Element {
                     }
                 }
                 if let Some(photo) = response.get(random_index_two) {
-                    div {class: "flex flex-col items-center",
+                    div {class: "items-center",
                         h2 { "{photo.rover.name}"}
                         p { "Date: {photo.earth_date}"}
                         img { src: "{photo.img_src}", alt: "Picture of Mars",
@@ -121,16 +130,29 @@ pub fn MarsMissionComponent() -> Element {
                 } else {
                     p {"Data are being loaded, please wait a moment..."}
                 }
-                if let Some(photo) = response.get(random_index_three) {
-                    div {class: "flex flex-col items-center",
-                        h2 { "{photo.rover.name}"}
-                        p { "Date: {photo.earth_date}"}
-                        img { src: "{photo.img_src}", alt: "Picture of Mars",
-                            class:"rounded-lg shadow-md shadow-slate-600 mb-10",
-                            style: "max-width: 500px; height: 500px;", }
+            }
+             div { class: "bg-stone-900 overflow-hidden mt-6 w-full h-full flex flex-col items-center justify-center text-slate-200",
+                div { class: "flex gap-6",
+                    if let Some(photo) = response.get(random_index_four) {
+                        div {class: "items-center",
+                            h2 { "{photo.rover.name}"}
+                            p { "Date: {photo.earth_date}"}
+                            img { src: "{photo.img_src}", alt: "Picture of Mars",
+                                class:"rounded-lg shadow-md shadow-slate-600 mb-10",
+                                style: "max-width: 500px; height: 500px;", }
+                        }
                     }
-                } else {
-                    p {"Data are being loaded, please wait a moment..."}
+                    if let Some(photo) = response.get(random_index_five) {
+                        div {class: "items-center",
+                            h2 { "{photo.rover.name}"}
+                            p { "Date: {photo.earth_date}"}
+                            img { src: "{photo.img_src}", alt: "Picture of Mars",
+                                class:"rounded-lg shadow-md shadow-slate-600 mb-10",
+                                style: "max-width: 500px; height: 500px;", }
+                        }
+                    } else {
+                        p {"Data are being loaded, please wait a moment..."}
+                    }
                 }
             }
         }

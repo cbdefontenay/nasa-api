@@ -40,9 +40,9 @@ pub fn HomeComponent() -> Element {
 
     rsx! {
         div {
-            class: "flex flex-col items-center justify-center w-full h-full bg-stone-900 pt-14 pb-10 font-strait",
+            class: "flex flex-col items-center justify-center w-full h-full bg-stone-900 pt-14 pb-10 font-amsterdam",
             h1 {
-                class: "text-4xl font-bold mb-10 text-slate-200",
+                class: "text-4xl font-bold font-amsterdam mb-10 text-slate-200",
                 "Picture of the Day"
             }
             if let Some(photo) = photo {

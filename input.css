@@ -8,3 +8,10 @@
         src: url(./assets/Strait-Regular.woff2) format('woff2');
     }
 }
+
+@layer base {
+    @font-face {
+        font-family: amsterdam;
+        src: url(/assets/NewAmsterdam-Regular.woff2) format('woff2');
+    }
+}

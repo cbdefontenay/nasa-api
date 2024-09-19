@@ -6,3 +6,4 @@ pub(crate) mod mars_mission_component;
 pub(crate) mod header_component;
 mod env;
 pub(crate) mod sun_component;
+mod mars_explanation_component;
