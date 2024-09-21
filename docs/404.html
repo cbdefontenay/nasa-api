@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Nasa-Api</title>
-    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="UTF-8"/>
-    <link rel="stylesheet" href="tailwind.css">
-    <link rel="stylesheet" href="./mars.css">
-    <link rel="stylesheet" href="./nasa-api/marscss9288607443bc2330.css">
-    <link rel="icon" href="logo.png">
+  <title>Nasa-Api</title>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="tailwind.css">
+  <link rel="stylesheet" href="mars.css">
+  <link rel="stylesheet" href="nasa-api/marscss9288607443bc2330.css">
 
 </head>
 <body>
 <div id="main"></div>
 <script type="module">
-    import init from "./assets/dioxus/dioxusproject.js";
-
-    init("./assets/dioxus/dioxusproject_bg.wasm").then(wasm => {
-        if (wasm.__wbindgen_start == undefined) {
-            wasm.main();
-        }
-    });
+  import init from "/assets/dioxus/dioxusproject.js";
+  init("/nasa-api/assets/dioxus/dioxusproject_bg.wasm").then(wasm => {
+    if (wasm.__wbindgen_start == undefined) {
+      wasm.main();
+    }
+  });
 </script>
 
 </body>
