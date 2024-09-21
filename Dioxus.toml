@@ -17,7 +17,7 @@ asset_dir = "assets"
 
 # HTML title tag content
 title = "Nasa-Api"
-base_path = "dioxusproject"
+base_path = "Nasa-Api"
 
 [web.watcher]
 
