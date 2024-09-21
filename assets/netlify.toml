@@ -1,5 +1,5 @@
 [build]
-command = "rustup default stable && cargo install dioxus-cli && dx build --release"
+command = "rustup default stable && cargo install dioxus-cli && dx build --release --verbose"
 
 [build.environment]
 RUST_VERSION = "stable"
