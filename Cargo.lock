@@ -611,7 +611,6 @@ dependencies = [
  "dioxus-signals",
  "dioxus-ssr",
  "dioxus-web",
- "serde",
 ]
 
 [[package]]
@@ -970,25 +969,6 @@ dependencies = [
  "quote",
  "server_fn_macro",
  "syn",
-]
-
-[[package]]
-name = "dioxusproject"
-version = "0.1.0"
-dependencies = [
- "dioxus",
- "dioxus-logger",
- "dotenv",
- "getrandom",
- "log",
- "manganis",
- "rand",
- "regex",
- "reqwest 0.12.7",
- "scraper",
- "serde",
- "serde_json",
- "wasm-bindgen",
 ]
 
 [[package]]
@@ -2098,6 +2078,25 @@ dependencies = [
  "mime",
  "spin",
  "version_check",
+]
+
+[[package]]
+name = "nasa-api"
+version = "0.1.0"
+dependencies = [
+ "dioxus",
+ "dioxus-logger",
+ "dotenv",
+ "getrandom",
+ "log",
+ "manganis",
+ "rand",
+ "regex",
+ "reqwest 0.12.7",
+ "scraper",
+ "serde",
+ "serde_json",
+ "wasm-bindgen",
 ]
 
 [[package]]

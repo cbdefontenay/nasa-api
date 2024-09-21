@@ -84,7 +84,7 @@ pub fn MarsMissionComponent() -> Element {
     let random_index_five = rand::thread_rng().gen_range(400..=601);
 
     rsx! {
-        div { class: "h-screen overflow-hidden",
+        div { class: "h-screen overflow-x-hidden",
 
             video {
                 class: "absolute top-0 left-0 w-full h-full object-cover",
@@ -102,7 +102,7 @@ pub fn MarsMissionComponent() -> Element {
 
         mars_explanation_component::MarsExplanationComponent {}
 
-        div { class: "bg-stone-900 overflow-hidden m-4 w-full h-full flex flex-col items-center justify-center text-slate-200",
+        div { class: "bg-stone-900 overflow-x-hidden p-4 w-full h-full flex flex-col items-center justify-center text-slate-200",
             h1 { class: "text-2xl font-bold font-amsterdam mt-10 mb-10", "{header}" }
 
             div { class: "flex flex-wrap gap-6",
