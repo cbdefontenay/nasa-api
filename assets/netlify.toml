@@ -2,3 +2,13 @@
 from = "/*"
 to = "/index.html"
 status = 200
+
+[build]
+command = "rustup default stable && cargo install dioxus-cli && dx build --release"
+
+[context.production.environment]
+RUSTUP_HOME = "/opt/buildhome/.rustup"
+CARGO_HOME = "/opt/buildhome/.cargo"
+
+[build.environment]
+RUST_VERSION = "stable"
