@@ -1,13 +1,4 @@
-[build]
-command = "rustup default stable && cargo install dioxus-cli && dx build --release --verbose"
-
-[build.environment]
-RUST_VERSION = "stable"
-RUSTUP_HOME = "/opt/buildhome/.rustup"
-CARGO_HOME = "/opt/buildhome/.cargo"
-
-[[plugins]]
-package = "@netlify/plugin-rust"
-
-[context.production]
-environment = { "RUST_VERSION" = "stable" }
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
