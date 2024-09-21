@@ -1,6 +1,11 @@
 [build]
 command = "rustup default stable && cargo install dioxus-cli && dx build --release"
 
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+
 [build.environment]
 RUST_VERSION = "stable"
 RUSTUP_HOME = "/opt/buildhome/.rustup"
