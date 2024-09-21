@@ -159,7 +159,7 @@ pub fn MarsMissionComponent() -> Element {
                             }
                         }
                     } else {
-                        p { "Data are being loaded, please wait a moment..." }
+                        p { "Data are being loaded, please wait a moment...." }
                     }
                 }
             }
