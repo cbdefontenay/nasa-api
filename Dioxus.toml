@@ -17,7 +17,7 @@ asset_dir = "assets"
 
 # HTML title tag content
 title = "Nasa-Api"
-base_path = "Nasa-Api"
+base_path = "nasa-api"
 
 [web.watcher]
 
