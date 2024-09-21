@@ -77,81 +77,89 @@ pub fn MarsMissionComponent() -> Element {
     });
 
 
-    let random_index = rand::thread_rng().gen_range(6..=70);
+    let random_index = rand::thread_rng().gen_range(2..=60);
     let random_index_two = rand::thread_rng().gen_range(198..=210);
     let random_index_three = rand::thread_rng().gen_range(345..=402);
     let random_index_four = rand::thread_rng().gen_range(30..=45);
     let random_index_five = rand::thread_rng().gen_range(400..=601);
 
     rsx! {
-         div {
-            class: "h-screen overflow-hidden",
+        div { class: "h-screen overflow-hidden",
 
             video {
                 class: "absolute top-0 left-0 w-full h-full object-cover",
-                autoplay:"true",
-                muted:"true",
+                autoplay: "true",
+                muted: "true",
                 r#loop: "true",
-                src: "https://cdn.pixabay.com/video/2022/12/15/143020-781982535_large.mp4",
+                src: "https://cdn.pixabay.com/video/2022/12/15/143020-781982535_large.mp4"
             }
-            div {
-                class: "relative z-10 flex items-center justify-center h-full",
-                h1 {
-                    class: "text-white text-5xl font-bold font-amsterdam",
+            div { class: "relative z-10 flex items-center justify-center h-full",
+                h1 { class: "text-white text-5xl font-bold font-amsterdam",
                     "Go on exploration on Mars."
                 }
             }
         }
 
-
-        mars_explanation_component::MarsExplanationComponent{}
+        mars_explanation_component::MarsExplanationComponent {}
 
         div { class: "bg-stone-900 overflow-hidden m-4 w-full h-full flex flex-col items-center justify-center text-slate-200",
-            h1 {class:"text-2xl font-bold font-amsterdam mt-10 mb-10", "{header}"}
+            h1 { class: "text-2xl font-bold font-amsterdam mt-10 mb-10", "{header}" }
 
             div { class: "flex flex-wrap gap-6",
                 if let Some(photo) = response.get(random_index) {
-                    div {class: "items-center",
-                        h2 { "{photo.rover.name}"}
-                        p { "Date: {photo.earth_date}"}
-                        img { src: "{photo.img_src}", alt: "Picture of Mars",
-                            class:"rounded-lg shadow-md shadow-slate-600 mb-10",
-                            style: "max-width: 500px; height: 500px;", }
+                    div { class: "items-center",
+                        h2 { "{photo.rover.name}" }
+                        p { "Date: {photo.earth_date}" }
+                        img {
+                            src: "{photo.img_src}",
+                            alt: "Picture of Mars",
+                            class: "rounded-lg shadow-md shadow-slate-600 mb-10",
+                            style: "max-width: 500px; height: 500px;"
+                        }
                     }
                 }
                 if let Some(photo) = response.get(random_index_two) {
-                    div {class: "items-center",
-                        h2 { "{photo.rover.name}"}
-                        p { "Date: {photo.earth_date}"}
-                        img { src: "{photo.img_src}", alt: "Picture of Mars",
-                            class:"rounded-lg shadow-md shadow-slate-600 mb-10",
-                            style: "max-width: 500px; height: 500px;", }
+                    div { class: "items-center",
+                        h2 { "{photo.rover.name}" }
+                        p { "Date: {photo.earth_date}" }
+                        img {
+                            src: "{photo.img_src}",
+                            alt: "Picture of Mars",
+                            class: "rounded-lg shadow-md shadow-slate-600 mb-10",
+                            style: "max-width: 500px; height: 500px;"
+                        }
                     }
                 } else {
-                    p {"Data are being loaded, please wait a moment..."}
+                    p { "Data are being loaded, please wait a moment..." }
                 }
             }
-             div { class: "bg-stone-900 overflow-hidden mt-6 w-full h-full flex flex-col items-center justify-center text-slate-200",
+            div { class: "bg-stone-900 overflow-hidden mt-6 w-full h-full flex flex-col items-center justify-center text-slate-200",
                 div { class: "flex gap-6",
                     if let Some(photo) = response.get(random_index_four) {
-                        div {class: "items-center",
-                            h2 { "{photo.rover.name}"}
-                            p { "Date: {photo.earth_date}"}
-                            img { src: "{photo.img_src}", alt: "Picture of Mars",
-                                class:"rounded-lg shadow-md shadow-slate-600 mb-10",
-                                style: "max-width: 500px; height: 500px;", }
+                        div { class: "items-center",
+                            h2 { "{photo.rover.name}" }
+                            p { "Date: {photo.earth_date}" }
+                            img {
+                                src: "{photo.img_src}",
+                                alt: "Picture of Mars",
+                                class: "rounded-lg shadow-md shadow-slate-600 mb-10",
+                                style: "max-width: 500px; height: 500px;"
+                            }
                         }
                     }
                     if let Some(photo) = response.get(random_index_five) {
-                        div {class: "items-center",
-                            h2 { "{photo.rover.name}"}
-                            p { "Date: {photo.earth_date}"}
-                            img { src: "{photo.img_src}", alt: "Picture of Mars",
-                                class:"rounded-lg shadow-md shadow-slate-600 mb-10",
-                                style: "max-width: 500px; height: 500px;", }
+                        div { class: "items-center",
+                            h2 { "{photo.rover.name}" }
+                            p { "Date: {photo.earth_date}" }
+                            img {
+                                src: "{photo.img_src}",
+                                alt: "Picture of Mars",
+                                class: "rounded-lg shadow-md shadow-slate-600 mb-10",
+                                style: "max-width: 500px; height: 500px;"
+                            }
                         }
                     } else {
-                        p {"Data are being loaded, please wait a moment..."}
+                        p { "Data are being loaded, please wait a moment..." }
                     }
                 }
             }

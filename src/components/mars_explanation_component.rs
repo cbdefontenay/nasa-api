@@ -1,6 +1,7 @@
 #![allow(non_snake_case)]
 
 use dioxus::prelude::*;
+use manganis::mg;
 use serde_json::Value;
 
 #[component]
@@ -20,7 +21,6 @@ pub fn MarsExplanationComponent() -> Element {
     let circumference = use_signal(String::new);
 
     let header = "The planet Mars and its secrets revealed.";
-    let styleList = "text-rose-600 text-lg";
 
     use_effect(move || {
         let mut explanation = explanation.clone();
@@ -82,41 +82,33 @@ pub fn MarsExplanationComponent() -> Element {
         (|| ())()
     });
 
-    rsx! {
-        div {
-            class: "bg-stone-900 overflow-hidden pt-10 w-full h-full flex pb-10",
+     const _: &str = mg!(file("./assets/mars.css"));
 
-            // Left side with data list
-            div {
-                class: "w-1/2 p-6 mr-10 bg-stone-800 text-slate-200 animate-slideIn",
-                h2 { class: "text-2xl text-blue-500 font-bold mb-4 text-yellow-400", "Mars Data" }
-                ul {
-                    class: "space-y-3",
-                    li { class: "{styleList}", "Distance: {distance}" }
-                    li { class: "{styleList}", "Radius: {radius}" }
-                    li { class: "{styleList}", "Volume: {volume}" }
-                    li { class: "{styleList}", "Density: {density}" }
-                    li { class: "{styleList}", "Mass: {mass}" }
-                    li { class: "{styleList}", "Area: {area}" }
-                    li { class: "{styleList}", "Gravity: {gravity}" }
-                    li { class: "{styleList}", "Eccentricity: {eccentricity}" }
-                    li { class: "{styleList}", "Inclination: {inclination}" }
-                    li { class: "{styleList}", "Velocity: {velocity}" }
-                    li { class: "{styleList}", "Circumference: {circumference}" }
+    rsx! {
+        div { class: "mars-explanation-container",
+
+            div { class: "mars-data-section",
+                h2 { class: "mars-data-header", "Mars Data" }
+                ul { class: "mars-data-list",
+                    li { class: "data-item", "Distance: {distance}" }
+                    li { class: "data-item", "Radius: {radius}" }
+                    li { class: "data-item", "Volume: {volume}" }
+                    li { class: "data-item", "Density: {density}" }
+                    li { class: "data-item", "Mass: {mass}" }
+                    li { class: "data-item", "Area: {area}" }
+                    li { class: "data-item", "Gravity: {gravity}" }
+                    li { class: "data-item", "Eccentricity: {eccentricity}" }
+                    li { class: "data-item", "Inclination: {inclination}" }
+                    li { class: "data-item", "Velocity: {velocity}" }
+                    li { class: "data-item", "Circumference: {circumference}" }
                 }
             }
 
-            // Right side with description and explanation
-            div {
-                class: "w-1/2 p-6 bg-stone-700 text-slate-200 animate-slideIn",
-                h1 {
-                    class: "text-3xl text-blue-500 font-bold mb-4 text-yellow-400",
-                    "{header}"
-                }
-                div {
-                    class: "mt-4 text-justify px-4",
-                    p { class: "text-lg mb-4", "{description}" }
-                    p { class: "text-lg", "{explanation}" }
+            div { class: "mars-description-section",
+                h1 { class: "mars-description-header", "{header}" }
+                div { class: "mars-description-text",
+                    p { class: "description", "{description}" }
+                    p { class: "explanation", "{explanation}" }
                 }
             }
         }

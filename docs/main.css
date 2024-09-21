@@ -1,0 +1,17 @@
+body {
+    font-family: amsterdam, "Agency FB", "Georgia", "Berlin Sans FB", serif;
+}
+
+@layer base {
+    @font-face {
+        font-family: strait;
+        src: url(./Strait-Regular.woff2) format("woff2");
+    }
+}
+
+@layer base {
+    @font-face {
+        font-family: amsterdam;
+        src: url(./NewAmsterdam-Regular.woff2) format("woff2");
+    }
+}

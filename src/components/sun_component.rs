@@ -37,19 +37,16 @@ pub fn SunComponent() -> Element {
     });
 
     rsx! {
-        div {
-            class: "relative h-screen w-full overflow-hidden",
+        div { class: "relative h-screen w-full overflow-hidden",
 
             img {
                 src: "{SUN}",
                 class: "absolute inset-0 h-full w-full object-cover"
             }
 
-            div {
-                class: "absolute inset-0 w-full h-full md:h-screen flex flex-col items-start justify-center pl-8 pr-4",
+            div { class: "absolute inset-0 w-full h-full md:h-screen flex flex-col items-start justify-center pl-8 pr-4",
 
-                h1 {
-                    class: "text-white text-3xl font-bold mb-4 font-amsterdam ml-10",
+                h1 { class: "text-yellow-500 text-3xl font-bold mb-4 font-amsterdam ml-10",
                     "{header}"
                 }
             }

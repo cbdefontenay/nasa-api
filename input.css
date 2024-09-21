@@ -1,17 +1,28 @@
 @tailwind base;
+@layer base {
+  html {
+    @apply font-amsterdam;
+  }
+}
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-    @font-face {
-        font-family: strait;
-        src: url(./assets/Strait-Regular.woff2) format('woff2');
-    }
+  @font-face {
+    font-family: strait;
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(./assets/Strait-Regular.woff2) format("woff2");
+  }
 }
 
 @layer base {
-    @font-face {
-        font-family: amsterdam;
-        src: url(/assets/NewAmsterdam-Regular.woff2) format('woff2');
-    }
+  @font-face {
+    font-family: amsterdam;
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(/assets/NewAmsterdam-Regular.woff2) format("woff2");
+  }
 }
