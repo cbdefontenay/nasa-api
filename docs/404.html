@@ -15,7 +15,7 @@
 <script type="module">
     import init from "./assets/dioxus/dioxusproject.js";
 
-    init("/dioxusproject/assets/dioxus/dioxusproject_bg.wasm").then(wasm => {
+    init("./assets/dioxus/dioxusproject_bg.wasm").then(wasm => {
         if (wasm.__wbindgen_start == undefined) {
             wasm.main();
         }
