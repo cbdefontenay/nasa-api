@@ -39,4 +39,4 @@ jobs:
         with:
           project: "discovery-nasa-api"
           entrypoint: "main.rs"
-          root: "/src"
+          root: "sr/c"
