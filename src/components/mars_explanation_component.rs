@@ -76,7 +76,7 @@ pub fn MarsExplanationComponent() -> Element {
                         Err(e) => eprintln!("Error parsing JSON: {}", e),
                     }
                 }
-                Err(e) => eprintln!("Error fetching data: {}", e),
+                Err(e) => eprintln!("Error fetching data from JSOn: {}", e),
             }
         });
         (|| ())()
