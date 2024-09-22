@@ -38,5 +38,5 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: "discovery-nasa-api"
-          entrypoint: "dist/index.html"
-          root: "dist/"
+          entrypoint: "index.html"
+          root: "/"
