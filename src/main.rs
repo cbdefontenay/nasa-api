@@ -2,8 +2,10 @@
 
 mod components;
 
+use std::env;
 use dioxus::prelude::*;
 use dioxus_logger::tracing;
+use dotenv::dotenv;
 
 #[derive(Clone, Routable, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
 #[rustfmt::skip]
@@ -20,8 +22,9 @@ enum Route {
 }
 
 fn main() {
+    dotenv().ok();
     dioxus_logger::init(tracing::Level::INFO).expect("failed to init logger");
-    tracing::info!("starting app");
+    tracing::info!("starting app.");
     launch(App);
 }
 
