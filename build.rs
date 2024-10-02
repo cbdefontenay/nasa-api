@@ -13,7 +13,7 @@ fn main() {
     dotenv().ok();
 
     // Write a dummy const, for example purposes
-    f.write_all(b"pub const APP_WASM_FRAMEWORK: &'static str = \"FkPkN10hq7HCUJdK31YREnGXavKLyMALK9ovSFfU\";\n")
+    f.write_all(b"pub const APP_API_KEY: &'static str = \"FkPkN10hq7HCUJdK31YREnGXavKLyMALK9ovSFfU\";\n")
         .unwrap();
 
     // Write environment variables starting with "APP_"
