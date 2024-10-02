@@ -5,7 +5,7 @@ use reqwest::Client;
 use serde::{Deserialize, Serialize};
 use rand::Rng;
 use serde_json::Value;
-use crate::components::{env, mars_explanation_component};
+use crate::components::{mars_explanation_component};
 
 #[derive(Deserialize, Serialize, Debug)]
 pub struct Photo {
