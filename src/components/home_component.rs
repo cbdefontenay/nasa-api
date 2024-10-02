@@ -3,7 +3,7 @@
 use dioxus::prelude::*;
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
-mod env;
+use crate::components::env;
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Photo {
@@ -20,7 +20,7 @@ pub fn HomeComponent() -> Element {
     use_effect(move || {
         let mut response = response.clone();
         spawn(async move {
-            let url = format!("https://api.nasa.gov/planetary/apod?api_key={}", env::API_KEY);
+            let url = format!("https://api.nasa.gov/planetary/apod?api_key={}", env::APP_API_KEY);
 
             match reqwest::get(&url).await {
                 Ok(res) => {
