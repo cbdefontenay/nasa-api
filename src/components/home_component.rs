@@ -4,6 +4,7 @@ use dioxus::prelude::*;
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
 use crate::components::env;
+use crate::reqwester;
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Photo {
@@ -11,6 +12,10 @@ pub struct Photo {
     title: String,
     hdurl: String,
     date: String,
+}
+
+async fn fetch_and_display_from_api(url: &str, field: &str) -> String {
+    reqwester!(url, field)
 }
 
 #[component]

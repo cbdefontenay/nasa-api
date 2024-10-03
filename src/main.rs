@@ -1,6 +1,7 @@
 #![allow(non_snake_case)]
 
 mod components;
+mod macros;
 
 use std::env;
 use dioxus::prelude::*;
