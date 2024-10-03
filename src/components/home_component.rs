@@ -4,7 +4,7 @@ use dioxus::prelude::*;
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
 use crate::components::env;
-use crate::reqwester;
+// use crate::reqwester;
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Photo {
