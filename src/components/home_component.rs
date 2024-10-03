@@ -14,9 +14,9 @@ pub struct Photo {
     date: String,
 }
 
-async fn fetch_and_display_from_api(url: &str, field: &str) -> String {
-    reqwester!(url, field)
-}
+// async fn fetch_and_display_from_api(url: &str, field: &str) -> String {
+//     reqwester!(url, field)
+// }
 
 #[component]
 pub fn HomeComponent() -> Element {
