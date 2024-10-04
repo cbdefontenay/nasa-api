@@ -7,6 +7,7 @@
   flex-direction: row;
   padding-bottom: 10px;
   font-family: "Amsterdam", sans-serif;
+  overflow: hidden;
 }
 
 .mars-data-section {
@@ -21,6 +22,7 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   animation: slideInLeft 0.7s ease-in-out;
+  overflow-x: hidden;
 }
 
 .mars-data-header {
@@ -50,10 +52,9 @@
   transform: scale(1.05);
 }
 
-/* Section for displaying Mars description */
 .mars-description-section {
   width: 66.67%;
-  padding: 6px;
+  padding: 10px;
   background-color: #2f2f2f;
   display: flex;
   flex-direction: column;
@@ -67,11 +68,13 @@
 .mars-description-header {
   font-size: 2.5rem;
   color: #f5c542;
+  font-family: Amsterdam, "Agency FB", "Georgia", "Berlin Sans FB", serif;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
 .mars-description-text {
+  font-family: "Berlin Sans FB", "Agency FB", "Georgia", "Berlin Sans FB", serif;
   margin-top: 4px;
   text-align: justify;
   padding-left: 6px;

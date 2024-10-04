@@ -10,7 +10,7 @@ pub fn HeaderComponent() -> Element {
 
     rsx! {
         div {
-            class: "h-screen overflow-hidden",
+            class: "main-wrapper h-screen overflow-hidden",
 
             video {
                 class: "absolute top-0 left-0 w-full h-full object-cover",
@@ -32,7 +32,11 @@ pub fn HeaderComponent() -> Element {
 
                     h1 {
                         class: "text-white text-5xl font-bold font-strait",
-                        "Discover the Earth and Mars with the NASA."
+                        "Explore the Universe with the NASA."
+                    }
+                    h3 {
+                        class: "text-white text-2xl font-bold italic font-strait",
+                        "This website was made using the NASA Open API."
                     }
                 }
             }

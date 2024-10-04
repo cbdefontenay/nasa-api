@@ -1,5 +1,5 @@
 body {
-    font-family: amsterdam, "Agency FB", "Georgia", "Berlin Sans FB", serif;
+    font-family: Amsterdam, "Agency FB", "Georgia", "Berlin Sans FB", serif;
 }
 
 @layer base {
@@ -11,7 +11,11 @@ body {
 
 @layer base {
     @font-face {
-        font-family: amsterdam;
+        font-family: Amsterdam;
         src: url(./NewAmsterdam-Regular.woff2) format("woff2");
     }
+}
+
+.main-wrapper {
+    font-family: Amsterdam, "Agency FB", "Georgia", "Berlin Sans FB", serif;
 }

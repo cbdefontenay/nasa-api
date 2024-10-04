@@ -4,7 +4,6 @@ use dioxus::prelude::*;
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
 use crate::components::env;
-// use crate::reqwester;
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Photo {
@@ -14,9 +13,6 @@ pub struct Photo {
     date: String,
 }
 
-// async fn fetch_and_display_from_api(url: &str, field: &str) -> String {
-//     reqwester!(url, field)
-// }
 
 #[component]
 pub fn HomeComponent() -> Element {
@@ -44,7 +40,7 @@ pub fn HomeComponent() -> Element {
     let photo = photo.as_ref();
 
     rsx! {
-        div { class: "flex flex-col items-center justify-center w-full h-full bg-stone-900 pt-14 pb-10 font-amsterdam",
+        div { class: "main-wrapper flex flex-col items-center justify-center w-full h-full bg-stone-900 pt-14 pb-10 font-amsterdam",
             h1 { class: "text-4xl font-bold font-amsterdam mb-10 text-slate-200", "Picture of the Day" }
             if let Some(photo) = photo {
                 div { class: "flex flex-row items-start justify-center w-3/4 max-w-4xl",

@@ -6,6 +6,8 @@ use serde_json::Value;
 
 #[component]
 pub fn MarsExplanationComponent() -> Element {
+    let header = "Why is the red planet called \"Mars\"?";
+
     let explanation = use_signal(String::new);
     let description = use_signal(String::new);
     let distance = use_signal(String::new);
@@ -19,8 +21,6 @@ pub fn MarsExplanationComponent() -> Element {
     let inclination = use_signal(String::new);
     let velocity = use_signal(String::new);
     let circumference = use_signal(String::new);
-
-    let header = "The planet Mars and its secrets revealed.";
 
     use_effect(move || {
         let mut explanation = explanation.clone();
@@ -82,13 +82,13 @@ pub fn MarsExplanationComponent() -> Element {
         (|| ())()
     });
 
-     const _: &str = mg!(file("./assets/mars.css"));
+    const _: &str = mg!(file("./assets/mars.css"));
 
     rsx! {
         div { class: "mars-explanation-container",
 
             div { class: "mars-data-section",
-                h2 { class: "mars-data-header", "Mars Data" }
+                h2 { class: "mars-data-header", "About the red planet." }
                 ul { class: "mars-data-list",
                     li { class: "data-item", "Distance: {distance}" }
                     li { class: "data-item", "Radius: {radius}" }
