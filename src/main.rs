@@ -48,6 +48,7 @@ fn Home() -> Element {
 fn NavBar() -> Element {
     let config = NavbarConfig {
         background_color: ColorScheme::Dark,
+        nav_header: "NASA Discovery".to_string(),
         nav_items: vec!["Home".to_string(), "Planets".to_string()],
         nav_links: vec!["/".to_string(), "/planets".to_string()],
         nav_item_color: NavItemsColor::Light,
