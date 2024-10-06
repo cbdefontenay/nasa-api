@@ -1118,6 +1118,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "freyr"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fd6967191dd8ff78f5526e39b5de446283acbd9bf17dde8fc617da9b331be5e6"
+dependencies = [
+ "dioxus",
+ "dioxus-logger",
+ "manganis",
+]
+
+[[package]]
 name = "futf"
 version = "0.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2087,6 +2098,7 @@ dependencies = [
  "dioxus",
  "dioxus-logger",
  "dotenv",
+ "freyr",
  "getrandom",
  "log",
  "manganis",

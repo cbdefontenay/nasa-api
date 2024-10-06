@@ -1,6 +1,5 @@
-#![allow(non_snake_case)]
-
 use dioxus::prelude::*;
+use manganis::mg;
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
 use crate::components::env;
@@ -13,10 +12,10 @@ pub struct Photo {
     date: String,
 }
 
-
 #[component]
 pub fn HomeComponent() -> Element {
     let response = use_signal(|| None::<Photo>);
+    const _: &str = mg!(file("./assets/main.css"));
 
     use_effect(move || {
         let mut response = response.clone();
@@ -40,23 +39,21 @@ pub fn HomeComponent() -> Element {
     let photo = photo.as_ref();
 
     rsx! {
-        div { class: "main-wrapper flex flex-col items-center justify-center w-full h-full bg-stone-900 pt-14 pb-10 font-amsterdam",
-            h1 { class: "text-4xl font-bold font-amsterdam mb-10 text-slate-200", "Picture of the Day" }
+        div { class: "main-wrapper",
+            h1 { "Picture of the Day" }
             if let Some(photo) = photo {
-                div { class: "flex flex-row items-start justify-center w-3/4 max-w-4xl",
+                div { class: "content",
                     img {
-                        class: "rounded-lg shadow-lg mb-4 mt-6 mr-20",
                         src: "{photo.hdurl}",
-                        style: "max-width: 400px; height: 400px;",
                         alt: "picture of cosmos"
                     }
-                    div { class: "flex flex-col text-gray-200",
-                        h2 { class: "text-2xl text-blue-500 font-semibold mb-4", "{photo.title}" }
-                        p { class: "text-base text-justify", "{photo.explanation}" }
+                    div { class: "text",
+                        h2 { "{photo.title}" }
+                        p { "{photo.explanation}" }
                     }
                 }
             } else {
-                p { class: "text-lg text-red-500", "loading data..." }
+                p { class: "loading", "loading data..." }
             }
         }
     }

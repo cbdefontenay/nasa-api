@@ -23,6 +23,7 @@ serde_json = "1.0.124"
 rand = "0.8.5"
 wasm-bindgen = "0.2.92"
 dotenv = "0.15.0"
+freyr = "0.1.1"
 
 [build-dependencies]
 dotenv = "0.15"

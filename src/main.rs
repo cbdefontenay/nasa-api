@@ -7,6 +7,7 @@ use std::env;
 use dioxus::prelude::*;
 use dioxus_logger::tracing;
 use dotenv::dotenv;
+use freyr::{ColorScheme, IconColor, NavItemsColor, Navbar, NavbarConfig};
 
 #[derive(Clone, Routable, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
 #[rustfmt::skip]
@@ -45,9 +46,16 @@ fn Home() -> Element {
 
 #[component]
 fn NavBar() -> Element {
+    let config = NavbarConfig {
+        background_color: ColorScheme::Dark,
+        nav_items: vec!["Home".to_string(), "Planets".to_string()],
+        nav_links: vec!["/".to_string(), "/planets".to_string()],
+        nav_item_color: NavItemsColor::Light,
+        icon_color: IconColor::Custom("#c61aff"),
+    };
     rsx! {
-        components::nav_bar_component::NavbarComponent{}
-         Outlet::<Route> {}
+        Navbar { config }
+        Outlet::<Route> {}
     }
 }
 
