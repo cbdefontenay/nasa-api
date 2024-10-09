@@ -40,7 +40,9 @@ pub fn HomeComponent() -> Element {
 
     rsx! {
         div { class: "main-wrapper",
-            h1 { "Picture of the Day" }
+            h1 {
+                class: "title",
+                "Picture of the Day" }
             if let Some(photo) = photo {
                 div { class: "content",
                     img {

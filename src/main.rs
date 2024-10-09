@@ -6,7 +6,6 @@ mod macros;
 use std::env;
 use dioxus::prelude::*;
 use dioxus_logger::tracing;
-use dotenv::dotenv;
 use freyr::prelude::*;
 
 #[derive(Clone, Routable, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
@@ -26,7 +25,6 @@ enum Route {
 }
 
 fn main() {
-    dotenv().ok();
     dioxus_logger::init(tracing::Level::INFO).expect("failed to init logger");
     tracing::info!("starting app.");
     launch(App);

@@ -7,10 +7,11 @@ use manganis::*;
 #[component]
 pub fn HeaderComponent() -> Element {
     const LOGO: ImageAsset = mg!(image("./assets/logo.png"));
+    const _: &str = mg!(file("./assets/home.css"));
 
     rsx! {
         div {
-            class: "h-screen overflow-hidden",
+            class: "home-wrapper h-screen overflow-x-hidden",
 
             video {
                 class: "absolute top-0 left-0 w-full h-full object-cover",
@@ -27,11 +28,11 @@ pub fn HeaderComponent() -> Element {
                     div {
                         class:"flex-1 md:mr-8 animate-fade-in-left",
                         h1 {
-                            class: "text-white text-3xl md:text-5xl font-bold font-strait mb-4",
-                            "Explore the Universe with NASA."
+                            class: "text-white text-3xl md:text-5xl font-bold mb-4",
+                            "Explore the Cosmos with the NASA."
                         }
                         h3 {
-                            class: "text-white text-xl md:text-2xl font-bold italic font-strait",
+                            class: "text-white text-xl md:text-2xl font-bold italic",
                             "This website was made using the NASA Open API."
                         }
                     }

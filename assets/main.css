@@ -20,6 +20,10 @@ body, html {
     box-sizing: border-box;
 }
 
+.title {
+    font-family: Amsterdam, "Agency FB", "Georgia", "Berlin Sans FB", serif;
+}
+
 .main-wrapper {
     display: flex;
     flex-direction: column;
