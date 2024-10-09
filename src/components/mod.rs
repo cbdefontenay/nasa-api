@@ -7,3 +7,5 @@ pub(crate) mod header_component;
 pub(crate) mod env;
 pub(crate) mod sun_component;
 pub(crate) mod mars_explanation_component;
+pub(crate) mod planets_component;
+mod card_component;

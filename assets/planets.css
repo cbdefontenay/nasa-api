@@ -1,0 +1,48 @@
+.planets-header {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    font-family: "Berlin Sans FB Demi", "Georgia Pro", sans-serif;
+    margin-top: 2em;
+    margin-bottom: 1.5em;
+    font-size: 2rem;
+}
+
+.planets-wrapper {
+    font-family: Amsterdam, "Agency FB", "Georgia", "Berlin Sans FB", serif;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+}
+
+
+@media (max-width: 1024px) {
+    .planets-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .planets-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4d4646;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2a1212;
+}

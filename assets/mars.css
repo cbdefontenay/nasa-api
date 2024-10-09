@@ -92,7 +92,6 @@
   font-family: monospace;
 }
 
-/* Animations */
 @keyframes slideInLeft {
   from {
     transform: translateX(-100%);

@@ -7,7 +7,7 @@ use std::env;
 use dioxus::prelude::*;
 use dioxus_logger::tracing;
 use dotenv::dotenv;
-use freyr::{ColorScheme, IconColor, NavItemsColor, Navbar, NavbarConfig};
+use freyr::prelude::*;
 
 #[derive(Clone, Routable, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
 #[rustfmt::skip]
@@ -15,6 +15,8 @@ enum Route {
     #[layout(NavBar)]
         #[route("/")]
         Home {},
+        #[route("/planets")]
+        Planets {},
         #[route("/about")]
         About {},
         #[route("/planets/mars-missions")]
@@ -40,13 +42,12 @@ fn App() -> Element {
 fn Home() -> Element {
     rsx! {
         components::header_component::HeaderComponent{}
-        // components::home_component::HomeComponent{}
     }
 }
 
 #[component]
 fn NavBar() -> Element {
-    let config = NavbarConfig {
+    let navbar_config = NavbarConfig {
         background_color: ColorScheme::Dark,
         nav_header: "NASA Discovery".to_string(),
         nav_items: vec!["Home".to_string(), "Planets".to_string()],
@@ -55,7 +56,7 @@ fn NavBar() -> Element {
         icon_color: IconColor::Custom("#c61aff"),
     };
     rsx! {
-        Navbar { config }
+        Navbar { navbar_config }
         Outlet::<Route> {}
     }
 }
@@ -64,6 +65,13 @@ fn NavBar() -> Element {
 fn About() -> Element {
     rsx! {
         components::about_component::AboutComponent {}
+    }
+}
+
+#[component]
+fn Planets() -> Element {
+    rsx! {
+        components::planets_component::PlanetsComponent {}
     }
 }
 
