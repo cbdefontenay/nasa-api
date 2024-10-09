@@ -44,7 +44,7 @@ pub fn HeaderComponent() -> Element {
                     div {
                         class: "flex-1 flex justify-center items-center md:justify-end animate-fade-in-right",
                         img {
-                            class: "w-20 h-20 md:w-24 md:h-24 rounded-lg bg-transparent",
+                            class: "w-20 h-20 md:w-40 md:h-40 md:mr-10 rounded-lg bg-transparent",
                             src: "{LOGO}",
                             alt: "Logo of the website"
                         }
