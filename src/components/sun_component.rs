@@ -8,6 +8,7 @@ use serde_json::Value;
 pub fn SunComponent() -> Element {
     let title = use_signal(String::new);
     let description = use_signal(String::new);
+    let mut description_sun = use_signal(String::new);
     let header = "Our star: the Sun.";
     let description_text = "The Sun is somehow unreachable, but here is a glimpse of it...";
     const _: &str = mg!(file("./assets/sun.css"));
@@ -26,8 +27,10 @@ pub fn SunComponent() -> Element {
                         Ok(json) => {
                             let title_value = json["title"].as_str().unwrap_or("No Title found.");
                             let description_value = json["description"]["blurb"].as_str().unwrap_or("No Description found.");
+                            let description_more = json["description"]["more"].as_str().unwrap_or("No Description 'More' found.");
                             title.set(title_value.to_string());
                             description.set(description_value.to_string());
+                            description_sun.set(description_more.to_string());
                         }
                         Err(e) => eprintln!("Error parsing JSON: {}", e)
                     }
@@ -55,6 +58,21 @@ pub fn SunComponent() -> Element {
                 p { class: "sun-description",
                     "{description_text}"
                 }
+            }
+        }
+
+        div {
+            class: "sun-infos-wrapper",
+            h1 {
+                "{title}"
+            }
+            p {
+                class: "sun-description",
+                "{description}"
+            }
+            p {
+                class: "sun-description-more",
+                "{description_sun}"
             }
         }
     }
