@@ -134,7 +134,7 @@ pub fn MarsMissionComponent() -> Element {
                 }
             }
             div { class: "bg-stone-900 overflow-hidden mt-6 w-full h-full flex flex-col items-center justify-center text-slate-200",
-                div { class: "flex gap-6",
+                div { class: "flex flex-wrap gap-6",
                     if let Some(photo) = response.get(random_index_four) {
                         div { class: "items-center",
                             h2 { "{photo.rover.name}" }
@@ -159,7 +159,7 @@ pub fn MarsMissionComponent() -> Element {
                             }
                         }
                     } else {
-                        p { "Data are being loaded, please wait a moment...." }
+                        p { "This won't be long..." }
                     }
                 }
             }

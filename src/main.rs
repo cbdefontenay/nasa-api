@@ -7,6 +7,7 @@ use std::env;
 use dioxus::prelude::*;
 use dioxus_logger::tracing;
 use freyr::prelude::*;
+use manganis::{mg, ImageAsset};
 
 #[derive(Clone, Routable, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
 #[rustfmt::skip]
@@ -45,16 +46,24 @@ fn Home() -> Element {
 
 #[component]
 fn NavBar() -> Element {
-    let navbar_config = NavbarConfig {
+    const LOGO: ImageAsset = mg!(image("./assets/logo.png"));
+    const _: &str = mg!(file("./assets/main.css"));
+
+    let navbar_logo_config = NavbarWithLogoConfig {
         background_color: ColorScheme::Dark,
-        nav_header: "NASA Discovery".to_string(),
-        nav_items: vec!["Home".to_string(), "Planets".to_string()],
-        nav_links: vec!["/".to_string(), "/planets".to_string()],
+        nav_items: vec![String::from("Home"), String::from("Planets")],
+        nav_links: vec![String::from("/"), String::from("/planets")],
         nav_item_color: NavItemsColor::Light,
-        icon_color: IconColor::Custom("#c61aff"),
+        icon_color: IconColor::White,
+        logo_url: String::from("/"),
+        logo_src: LOGO,
+        logo_alt: String::from("logo"),
     };
     rsx! {
-        Navbar { navbar_config }
+        div {
+            class: "nav-wrapper",
+            NavbarWithLogo  { navbar_logo_config }
+        }
         Outlet::<Route> {}
     }
 }

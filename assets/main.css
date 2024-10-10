@@ -20,8 +20,11 @@ body, html {
     box-sizing: border-box;
 }
 
-.title {
+.nav-wrapper {
     font-family: Amsterdam, "Agency FB", "Georgia", "Berlin Sans FB", serif;
+}
+
+.title {
 }
 
 .main-wrapper {

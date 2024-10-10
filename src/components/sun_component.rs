@@ -8,7 +8,9 @@ use serde_json::Value;
 pub fn SunComponent() -> Element {
     let title = use_signal(String::new);
     let description = use_signal(String::new);
-    let header = "Explore the Sun like never before";
+    let header = "Our star: the Sun.";
+    let description_text = "The Sun is somehow unreachable, but here is a glimpse of it...";
+    const _: &str = mg!(file("./assets/sun.css"));
     const SUN: ImageAsset = mg!(image("./assets/sun.webp"));
 
     use_effect(move || {
@@ -37,17 +39,21 @@ pub fn SunComponent() -> Element {
     });
 
     rsx! {
-        div { class: "relative h-screen w-full overflow-hidden",
+        div { class: "sun-component-wrapper",
 
             img {
-                src: "{SUN}",
-                class: "absolute inset-0 h-full w-full object-cover"
+                class: "sun-background",
+                src: "{SUN}"
             }
 
-            div { class: "absolute inset-0 w-full h-full md:h-screen flex flex-col items-start justify-center pl-8 pr-4",
+            div { class: "sun-content",
 
-                h1 { class: "text-yellow-500 text-3xl font-bold mb-4 font-amsterdam ml-10",
+                h1 { class: "sun-title",
                     "{header}"
+                }
+
+                p { class: "sun-description",
+                    "{description_text}"
                 }
             }
         }
