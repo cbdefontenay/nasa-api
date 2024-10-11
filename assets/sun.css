@@ -37,7 +37,7 @@
 }
 
 .sun-title {
-    font-size: 2.5rem;
+    font-size: 3.5em;
     font-weight: bold;
     margin-bottom: 15px;
 }
@@ -46,6 +46,27 @@
     font-style: italic;
     font-size: 1.2rem;
     line-height: 1.5;
+}
+
+.sun-mission-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 1em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.sun-mission {
+    color: white;
+    font-size: 3em;
+    margin: 0 20px;
+}
+
+.sun-mission-number {
+    color: #288bff;
+    font-size: 2rem;
 }
 
 .sun-infos-wrapper {
@@ -142,5 +163,19 @@
 
     .sun-description-more {
         font-size: 1rem;
+    }
+
+    .sun-mission-wrapper {
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .sun-mission {
+        margin: 10px 0;
+        font-size: 1.2rem;
+    }
+
+    .sun-mission-number {
+        font-size: 1.5rem;
     }
 }

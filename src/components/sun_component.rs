@@ -58,6 +58,17 @@ pub fn SunComponent() -> Element {
                 p { class: "sun-description",
                     "{description_text}"
                 }
+                div {
+                    class: "sun-mission-wrapper",
+                    p { class: "sun-mission",
+                        span { class: "sun-mission-number", "18" }
+                        " Active Missions"
+                    }
+                    p { class: "sun-mission",
+                        span { class: "sun-mission-number", "13" }
+                        " Upcoming Missions"
+                    }
+                }
             }
         }
 
