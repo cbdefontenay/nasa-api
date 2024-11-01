@@ -23,6 +23,8 @@ enum Route {
         Mars {},
         #[route("/planets/sun")]
         Sun {},
+        #[route("/planets/saturn")]
+        Saturn {},
 }
 
 fn main() {
@@ -93,5 +95,12 @@ fn Mars() -> Element {
 fn Sun() -> Element {
     rsx! {
         components::sun_component::SunComponent {}
+    }
+}
+
+#[component]
+fn Saturn() -> Element {
+    rsx! {
+        components::saturn_component::SaturnComponent {}
     }
 }
