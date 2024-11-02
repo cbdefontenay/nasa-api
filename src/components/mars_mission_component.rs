@@ -83,19 +83,45 @@ pub fn MarsMissionComponent() -> Element {
     let random_index_four = rand::thread_rng().gen_range(30..=45);
     let random_index_five = rand::thread_rng().gen_range(400..=601);
 
-    rsx! {
-        div { class: "h-screen overflow-x-hidden",
+    let header = "Mars";
+    let description_text = "Discover the red Planet with pictures.";
 
-            video {
+    rsx! {
+        div {
+            class: "mars-component-wrapper",
+
+             video {
                 class: "absolute top-0 left-0 w-full h-full object-cover",
                 autoplay: "true",
                 muted: "true",
                 r#loop: "true",
                 src: "https://cdn.pixabay.com/video/2022/12/15/143020-781982535_large.mp4"
             }
-            div { class: "relative z-10 flex items-center justify-center h-full",
-                h1 { class: "text-white text-5xl font-bold font-amsterdam",
-                    "Go on exploration on Mars."
+
+            div {
+                class: "mars-content",
+
+                h1 {
+                    class: "mars-title",
+                    "{header}"
+                }
+
+                p {
+                    class: "mars-description",
+                    "{description_text}"
+                }
+                div {
+                    class: "mars-mission-wrapper",
+                    p {
+                        class: "mars-mission",
+                        span {
+                            class: "mars-mission-number", "03" }
+                        " NASA Spacecraft in Orbit"
+                    }
+                    p { class: "mars-mission",
+                        span { class: "mars-mission-number", "02" }
+                        " NASA Rovers on the Surface"
+                    }
                 }
             }
         }
