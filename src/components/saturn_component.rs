@@ -1,7 +1,6 @@
 #![allow(non_snake_case)]
 
 use dioxus::prelude::*;
-use manganis::*;
 use serde_json::Value;
 
 #[component]
@@ -11,8 +10,8 @@ pub fn SaturnComponent() -> Element {
     let mut description_saturn = use_signal(String::new);
     let header = "Saturn";
     let description_text = "Saturn is the sixth planet from the Sun, and the second largest in the solar system. It’s surrounded by beautiful rings.";
-    const SATURN: ImageAsset = mg!(image("./assets/saturn2.webp"));
-    const _: &str = mg!(file("./assets/saturn.css"));
+    const SATURN: Asset = asset!("./assets/saturn2.webp");
+    const _: Asset = asset!("./assets/saturn.css");
 
     use_effect(move || {
         let mut title = title.clone();

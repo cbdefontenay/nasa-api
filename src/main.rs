@@ -7,7 +7,6 @@ use std::env;
 use dioxus::prelude::*;
 use dioxus_logger::tracing;
 use freyr::prelude::*;
-use manganis::{mg, ImageAsset};
 
 #[derive(Clone, Routable, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
 #[rustfmt::skip]
@@ -48,8 +47,8 @@ fn Home() -> Element {
 
 #[component]
 fn NavBar() -> Element {
-    const LOGO: ImageAsset = mg!(image("./assets/logo.png"));
-    const _: &str = mg!(file("./assets/main.css"));
+    const LOGO: Asset = asset!("./assets/logo.png");
+    const _: Asset = asset!("./assets/main.css");
 
     let navbar_logo_config = NavbarWithLogoConfig {
         background_color: ColorScheme::Dark,

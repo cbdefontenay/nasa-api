@@ -2,12 +2,11 @@
 
 use dioxus::prelude::*;
 use crate::components::home_component;
-use manganis::*;
 
 #[component]
 pub fn HeaderComponent() -> Element {
-    const LOGO: ImageAsset = mg!(image("./assets/logo.png"));
-    const _: &str = mg!(file("./assets/home.css"));
+    const LOGO: Asset = asset!("./assets/logo.png");
+    const _: Asset = asset!("./assets/home.css");
 
     rsx! {
         div {

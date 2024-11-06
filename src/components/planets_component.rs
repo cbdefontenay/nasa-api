@@ -1,14 +1,13 @@
 use dioxus::prelude::*;
 use freyr::prelude::*;
 use crate::components::card_component;
-use manganis::{mg, ImageAsset};
 
 #[component]
 pub fn PlanetsComponent() -> Element {
-    const _: &str = mg!(file("./assets/planets.css"));
-    const MARS: ImageAsset = mg!(image("./assets/marsai.webp"));
-    const SUN: ImageAsset = mg!(image("./assets/sun2.webp"));
-    const SATURN: ImageAsset = mg!(image("./assets/saturn.webp"));
+    const MARS: Asset = asset!("./assets/marsai.webp");
+    const SUN: Asset = asset!("./assets/sun2.webp");
+    const SATURN: Asset = asset!("./assets/saturn.webp");
+    const _: Asset = asset!("./assets/planets.css");
 
     rsx! {
         div {

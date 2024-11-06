@@ -1,7 +1,6 @@
 #![allow(non_snake_case)]
 
 use dioxus::prelude::*;
-use manganis::mg;
 use serde_json::Value;
 
 #[component]
@@ -82,7 +81,7 @@ pub fn MarsExplanationComponent() -> Element {
         (|| ())()
     });
 
-    const _: &str = mg!(file("./assets/mars.css"));
+    const _: Asset = asset!("./assets/mars.css");
 
     rsx! {
         div { class: "mars-explanation-container",

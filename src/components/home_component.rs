@@ -1,5 +1,4 @@
 use dioxus::prelude::*;
-use manganis::mg;
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
 use crate::components::env;
@@ -15,7 +14,7 @@ pub struct Photo {
 #[component]
 pub fn HomeComponent() -> Element {
     let response = use_signal(|| None::<Photo>);
-    const _: &str = mg!(file("./assets/main.css"));
+    const _: Asset = asset!("./assets/main.css");
 
     use_effect(move || {
         let mut response = response.clone();

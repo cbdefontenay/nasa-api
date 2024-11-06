@@ -1,11 +1,10 @@
 #![allow(non_snake_case)]
 
 use dioxus::prelude::*;
-use manganis::{mg, ImageAsset};
 
 #[component]
-pub fn CardComponent(title: String, image: ImageAsset, url: String) -> Element {
-    const _: &str = mg!(file("./assets/card.css"));
+pub fn CardComponent(title: String, image: Asset, url: String) -> Element {
+    const _: Asset = asset!("./assets/card.css");
 
     rsx! {
         div {
