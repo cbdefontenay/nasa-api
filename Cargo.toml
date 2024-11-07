@@ -8,13 +8,12 @@ edition = "2021"
 
 [dependencies]
 
-dioxus = { version = "0.6.0-alpha.4", features = ["web", "router"] }
+dioxus = { git = "https://github.com/DioxusLabs/dioxus", features = ["web", "router"] }
 serde = { version = "1.0.210", features = ["derive"] }
 # Debug
 dioxus-logger = "0.5.1"
 reqwest = { version = "0.12.7", features = ["json"] }
 regex = "1.10.6"
-manganis = "0.6.0-alpha.4"
 scraper = "0.21.0"
 getrandom = { version = "0.2.15", features = ["js"] }
 log = "0.4.22"
