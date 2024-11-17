@@ -63,7 +63,7 @@ fn NavBar() -> Element {
         icon_color: IconColor::White,
         logo_url: String::from("/"),
         logo_src: LOGO,
-        logo_alt: String::from("logo"),
+        logo_alt: String::from("logo of NASA"),
     };
     rsx! {
         div {
