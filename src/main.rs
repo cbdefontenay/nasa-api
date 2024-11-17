@@ -5,6 +5,7 @@ mod macros;
 
 use std::env;
 use dioxus::prelude::*;
+use dioxus::document;
 use dioxus_logger::tracing;
 use freyr::prelude::*;
 
@@ -34,6 +35,10 @@ fn main() {
 
 fn App() -> Element {
     rsx! {
+        document::Link { rel: "stylesheet", href: asset!("/assets/main.css") }
+        document::Link { rel: "stylesheet", href: asset!("/assets/planets.css") }
+        document::Link { rel: "stylesheet", href: asset!("/assets/tailwind.css") }
+        document::Link { rel: "stylesheet", href: asset!("/assets/card.css") }
         Router::<Route> {}
     }
 }
