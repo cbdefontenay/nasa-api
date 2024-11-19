@@ -39,15 +39,10 @@ pub fn HomeComponent() -> Element {
 
     rsx! {
         div { class: "main-wrapper",
-            h1 {
-                class: "title",
-                "Picture of the Day" }
+            h1 { class: "title", "Picture of the Day" }
             if let Some(photo) = photo {
                 div { class: "content",
-                    img {
-                        src: "{photo.hdurl}",
-                        alt: "picture of cosmos"
-                    }
+                    img { src: "{photo.hdurl}", alt: "picture of cosmos" }
                     div { class: "text",
                         h2 { "{photo.title}" }
                         p { "{photo.explanation}" }

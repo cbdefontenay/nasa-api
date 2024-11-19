@@ -25,6 +25,8 @@ enum Route {
         Sun {},
         #[route("/planets/saturn")]
         Saturn {},
+        #[route("/planets/neptune")]
+        Neptune {},
 }
 
 fn main() {
@@ -46,7 +48,7 @@ fn App() -> Element {
 #[component]
 fn Home() -> Element {
     rsx! {
-        components::header_component::HeaderComponent{}
+        components::header_component::HeaderComponent {}
     }
 }
 
@@ -66,9 +68,8 @@ fn NavBar() -> Element {
         logo_alt: String::from("logo of NASA"),
     };
     rsx! {
-        div {
-            class: "nav-wrapper",
-            NavbarWithLogo  { navbar_logo_config }
+        div { class: "nav-wrapper",
+            NavbarWithLogo { navbar_logo_config }
         }
         Outlet::<Route> {}
     }
@@ -106,5 +107,12 @@ fn Sun() -> Element {
 fn Saturn() -> Element {
     rsx! {
         components::saturn_component::SaturnComponent {}
+    }
+}
+
+#[component]
+fn Neptune() -> Element {
+    rsx! {
+        components::neptune_component::NeptuneComponent {}
     }
 }

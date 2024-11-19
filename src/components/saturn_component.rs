@@ -43,55 +43,30 @@ pub fn SaturnComponent() -> Element {
     rsx! {
         div { class: "saturn-component-wrapper",
 
-            img {
-                class: "saturn-background",
-                src: "{SATURN}",
-                alt: "Saturn"
-            }
+            img { class: "saturn-background", src: "{SATURN}", alt: "Saturn" }
 
-            div {
-                class: "saturn-content",
+            div { class: "saturn-content",
 
-                h1 {
-                    class: "saturn-title",
-                    "{header}"
-                }
+                h1 { class: "saturn-title", "{header}" }
 
-                p {
-                    class: "saturn-description",
-                    "{description_text}"
-                }
-                div {
-                    class: "saturn-mission-wrapper",
-                    p {
-                        class: "saturn-mission",
-                        span {
-                            class: "saturn-mission-number", "Length of year" }
+                p { class: "saturn-description", "{description_text}" }
+                div { class: "saturn-mission-wrapper",
+                    p { class: "saturn-mission",
+                        span { class: "saturn-mission-number", "Length of year" }
                         "10 759"
                     }
-                    p {
-                        class: "saturn-mission",
-                        span {
-                            class: "saturn-mission-number", "Planet Type" }
+                    p { class: "saturn-mission",
+                        span { class: "saturn-mission-number", "Planet Type" }
                         "Gas Giant"
                     }
                 }
             }
         }
 
-        div {
-            class: "saturn-infos-wrapper",
-            h1 {
-                "{title}"
-            }
-            p {
-                class: "saturn-description",
-                "{description}"
-            }
-            p {
-                class: "saturn-description-more",
-                "{description_saturn}"
-            }
+        div { class: "saturn-infos-wrapper",
+            h1 { "{title}" }
+            p { class: "saturn-description", "{description}" }
+            p { class: "saturn-description-more", "{description_saturn}" }
         }
     }
 }

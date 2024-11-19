@@ -39,15 +39,15 @@ pub fn PostsComponent() -> Element {
     rsx! {
         div {
             h1 { "NASA Picture of the Day" }
-            // if let Some(photo) = photo {
-            //     div {
-            //         h2 { "{photo.title}" }
-            //         p { "{photo.explanation}" }
-            //         img { src: "{photo.hdurl}", alt: "picture of cosmos", style: "max-width: 600px; height: auto;" }
-            //     }
-            // } else {
-            //     p { "No photo available..." }
-            // }
+                // if let Some(photo) = photo {
+        //     div {
+        //         h2 { "{photo.title}" }
+        //         p { "{photo.explanation}" }
+        //         img { src: "{photo.hdurl}", alt: "picture of cosmos", style: "max-width: 600px; height: auto;" }
+        //     }
+        // } else {
+        //     p { "No photo available..." }
+        // }
         }
     }
 }

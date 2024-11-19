@@ -87,35 +87,24 @@ pub fn MarsMissionComponent() -> Element {
     let description_text = "Discover the red Planet with pictures.";
 
     rsx! {
-        div {
-            class: "mars-component-wrapper",
+        div { class: "mars-component-wrapper",
 
-             video {
+            video {
                 class: "absolute top-0 left-0 w-full h-full object-cover",
                 autoplay: "true",
                 muted: "true",
                 r#loop: "true",
-                src: "https://cdn.pixabay.com/video/2022/12/15/143020-781982535_large.mp4"
+                src: "https://cdn.pixabay.com/video/2022/12/15/143020-781982535_large.mp4",
             }
 
-            div {
-                class: "mars-content",
+            div { class: "mars-content",
 
-                h1 {
-                    class: "mars-title",
-                    "{header}"
-                }
+                h1 { class: "mars-title", "{header}" }
 
-                p {
-                    class: "mars-description",
-                    "{description_text}"
-                }
-                div {
-                    class: "mars-mission-wrapper",
-                    p {
-                        class: "mars-mission",
-                        span {
-                            class: "mars-mission-number", "03" }
+                p { class: "mars-description", "{description_text}" }
+                div { class: "mars-mission-wrapper",
+                    p { class: "mars-mission",
+                        span { class: "mars-mission-number", "03" }
                         " NASA Spacecraft in Orbit"
                     }
                     p { class: "mars-mission",
@@ -140,7 +129,7 @@ pub fn MarsMissionComponent() -> Element {
                             src: "{photo.img_src}",
                             alt: "Picture of Mars",
                             class: "rounded-lg shadow-md shadow-slate-600 mb-10",
-                            style: "max-width: 500px; height: 500px;"
+                            style: "max-width: 500px; height: 500px;",
                         }
                     }
                 }
@@ -152,7 +141,7 @@ pub fn MarsMissionComponent() -> Element {
                             src: "{photo.img_src}",
                             alt: "Picture of Mars",
                             class: "rounded-lg shadow-md shadow-slate-600 mb-10",
-                            style: "max-width: 500px; height: 500px;"
+                            style: "max-width: 500px; height: 500px;",
                         }
                     }
                 } else {
@@ -169,7 +158,7 @@ pub fn MarsMissionComponent() -> Element {
                                 src: "{photo.img_src}",
                                 alt: "Picture of Mars",
                                 class: "rounded-lg shadow-md shadow-slate-600 mb-10",
-                                style: "max-width: 500px; height: 500px;"
+                                style: "max-width: 500px; height: 500px;",
                             }
                         }
                     }
@@ -181,7 +170,7 @@ pub fn MarsMissionComponent() -> Element {
                                 src: "{photo.img_src}",
                                 alt: "Picture of Mars",
                                 class: "rounded-lg shadow-md shadow-slate-600 mb-10",
-                                style: "max-width: 500px; height: 500px;"
+                                style: "max-width: 500px; height: 500px;",
                             }
                         }
                     } else {

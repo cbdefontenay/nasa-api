@@ -43,22 +43,14 @@ pub fn SunComponent() -> Element {
     rsx! {
         div { class: "sun-component-wrapper",
 
-            img {
-                class: "sun-background",
-                src: "{SUN}"
-            }
+            img { class: "sun-background", src: "{SUN}" }
 
             div { class: "sun-content",
 
-                h1 { class: "sun-title",
-                    "{header}"
-                }
+                h1 { class: "sun-title", "{header}" }
 
-                p { class: "sun-description",
-                    "{description_text}"
-                }
-                div {
-                    class: "sun-mission-wrapper",
+                p { class: "sun-description", "{description_text}" }
+                div { class: "sun-mission-wrapper",
                     p { class: "sun-mission",
                         span { class: "sun-mission-number", "18" }
                         " Active Missions"
@@ -71,19 +63,10 @@ pub fn SunComponent() -> Element {
             }
         }
 
-        div {
-            class: "sun-infos-wrapper",
-            h1 {
-                "{title}"
-            }
-            p {
-                class: "sun-description",
-                "{description}"
-            }
-            p {
-                class: "sun-description-more",
-                "{description_sun}"
-            }
+        div { class: "sun-infos-wrapper",
+            h1 { "{title}" }
+            p { class: "sun-description", "{description}" }
+            p { class: "sun-description-more", "{description_sun}" }
         }
     }
 }
