@@ -8,6 +8,7 @@ pub fn PlanetsComponent() -> Element {
     const SUN: Asset = asset!("./assets/sun2.webp");
     const SATURN: Asset = asset!("./assets/saturn.webp");
     const NEPTUNE: Asset = asset!("./assets/neptune.webp");
+    const PLUTO: Asset = asset!("./assets/pluto.webp");
     const _: Asset = asset!("./assets/planets.css");
 
     rsx! {
@@ -34,6 +35,11 @@ pub fn PlanetsComponent() -> Element {
                 title: String::from("Discover Neptune"),
                 url: String::from("/planets/neptune"),
                 image: NEPTUNE,
+            }
+            card_component::CardComponent {
+                title: String::from("Discover Pluto"),
+                url: String::from("/planets/pluto"),
+                image: PLUTO,
             }
         }
     }

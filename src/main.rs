@@ -27,6 +27,8 @@ enum Route {
         Saturn {},
         #[route("/planets/neptune")]
         Neptune {},
+        #[route("/planets/pluto")]
+        Pluto {},
 }
 
 fn main() {
@@ -114,5 +116,12 @@ fn Saturn() -> Element {
 fn Neptune() -> Element {
     rsx! {
         components::neptune_component::NeptuneComponent {}
+    }
+}
+
+#[component]
+fn Pluto() -> Element {
+    rsx! {
+        components::pluto_component::PlutoComponent {}
     }
 }

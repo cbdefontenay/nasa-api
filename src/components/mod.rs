@@ -10,3 +10,4 @@ pub(crate) mod planets_component;
 pub(crate) mod card_component;
 pub(crate) mod saturn_component;
 pub(crate) mod neptune_component;
+pub(crate) mod pluto_component;

@@ -42,8 +42,10 @@ pub fn NeptuneComponent() -> Element {
 
     rsx! {
         div { class: "relative w-full h-[90vh] flex items-center pl-12 overflow-hidden opacity-0 animate-fadeIn animate-slideUp duration-1000",
-            img { class: "absolute top-0 left-0 w-full h-full object-cover z-[-1] opacity-0 animate-fadeIn animate-duration-[1200ms]",
-            src: "{NEPTUNE}"}
+            img {
+                class: "absolute top-0 left-0 w-full h-full object-cover z-[-1] opacity-0 animate-fadeIn animate-duration-[1200ms]",
+                src: "{NEPTUNE}",
+            }
 
             div { class: "z-10 max-w-[800px] text-white bg-black bg-opacity-50 p-5 rounded-lg transform translate-y-[50px] opacity-0 animate-fadeIn animate-slideUp animate-duration-[1500ms]",
 
