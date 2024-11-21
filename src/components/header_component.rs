@@ -5,7 +5,7 @@ use crate::components::home_component;
 
 #[component]
 pub fn HeaderComponent() -> Element {
-    const LOGO: Asset = asset!("./assets/logo.png");
+    const LOGO: Asset = asset!("./assets/images/logo.png");
     const _: Asset = asset!("./assets/home.css");
 
     rsx! {

@@ -1,11 +1,11 @@
 #![allow(non_snake_case)]
 
+use crate::components::{env, mars_explanation_component};
 use dioxus::prelude::*;
+use rand::Rng;
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
-use rand::Rng;
 use serde_json::Value;
-use crate::components::{env, mars_explanation_component};
 
 #[derive(Deserialize, Serialize, Debug)]
 pub struct Photo {
@@ -34,7 +34,6 @@ struct Rover {
     status: String,
 }
 
-
 #[component]
 pub fn MarsMissionComponent() -> Element {
     let mut response = use_signal(Vec::<Photo>::new);
@@ -50,32 +49,29 @@ pub fn MarsMissionComponent() -> Element {
             );
 
             match client.get(&url).send().await {
-                Ok(resp) => {
-                    match resp.text().await {
-                        Ok(text) => {
-                            match serde_json::from_str::<Value>(&text) {
-                                Ok(data) => {
-                                    if let Some(photos) = data["photos"].as_array() {
-                                        match serde_json::from_value::<Vec<Photo>>(Value::Array(photos.to_vec())) {
-                                            Ok(photos) => response.set(photos),
-                                            Err(e) => eprintln!("Error deserializing photos: {}", e),
-                                        }
-                                    } else {
-                                        eprintln!("Error: 'photos' field not found in JSON data...")
-                                    }
+                Ok(resp) => match resp.text().await {
+                    Ok(text) => match serde_json::from_str::<Value>(&text) {
+                        Ok(data) => {
+                            if let Some(photos) = data["photos"].as_array() {
+                                match serde_json::from_value::<Vec<Photo>>(Value::Array(
+                                    photos.to_vec(),
+                                )) {
+                                    Ok(photos) => response.set(photos),
+                                    Err(e) => eprintln!("Error deserializing photos: {}", e),
                                 }
-                                Err(e) => eprintln!("Error parsing JSON: {}", e),
+                            } else {
+                                eprintln!("Error: 'photos' field not found in JSON data...")
                             }
                         }
-                        Err(e) => eprintln!("Error reading response text: {}", e),
-                    }
-                }
+                        Err(e) => eprintln!("Error parsing JSON: {}", e),
+                    },
+                    Err(e) => eprintln!("Error reading response text: {}", e),
+                },
                 Err(e) => eprintln!("Error sending request: {}", e),
             }
         });
         (|| ())()
     });
-
 
     let random_index = rand::thread_rng().gen_range(2..=60);
     let random_index_two = rand::thread_rng().gen_range(198..=210);

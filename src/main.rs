@@ -23,6 +23,8 @@ enum Route {
         Mars {},
         #[route("/planets/sun")]
         Sun {},
+        #[route("/planets/moon")]
+        Moon {},
         #[route("/planets/saturn")]
         Saturn {},
         #[route("/planets/neptune")]
@@ -39,10 +41,10 @@ fn main() {
 
 fn App() -> Element {
     rsx! {
-        document::Link { rel: "stylesheet", href: asset!("/assets/main.css") }
-        document::Link { rel: "stylesheet", href: asset!("/assets/planets.css") }
-        document::Link { rel: "stylesheet", href: asset!("/assets/tailwind.css") }
-        document::Link { rel: "stylesheet", href: asset!("/assets/card.css") }
+        document::Link { rel: "stylesheet", href: asset!("./assets/main.css") }
+        document::Link { rel: "stylesheet", href: asset!("./assets/planets.css") }
+        document::Link { rel: "stylesheet", href: asset!("./assets/tailwind.css") }
+        document::Link { rel: "stylesheet", href: asset!("./assets/card.css") }
         Router::<Route> {}
     }
 }
@@ -56,8 +58,8 @@ fn Home() -> Element {
 
 #[component]
 fn NavBar() -> Element {
-    const LOGO: Asset = asset!("./assets/logo.png");
-    const _: Asset = asset!("./assets/main.css");
+    const LOGO: Asset = asset!("/assets/images/logo.png");
+    const _: Asset = asset!("/assets/main.css");
 
     let navbar_logo_config = NavbarWithLogoConfig {
         background_color: ColorScheme::Dark,
@@ -102,6 +104,13 @@ fn Mars() -> Element {
 fn Sun() -> Element {
     rsx! {
         components::sun_component::SunComponent {}
+    }
+}
+
+#[component]
+fn Moon() -> Element {
+    rsx! {
+        components::moon_component::MoonComponent {}
     }
 }
 

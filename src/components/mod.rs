@@ -1,6 +1,5 @@
 pub(crate) mod about_component;
 pub(crate) mod home_component;
-pub(crate) mod posts_component;
 pub(crate) mod mars_mission_component;
 pub(crate) mod header_component;
 pub(crate) mod env;
@@ -11,3 +10,5 @@ pub(crate) mod card_component;
 pub(crate) mod saturn_component;
 pub(crate) mod neptune_component;
 pub(crate) mod pluto_component;
+pub(crate) mod moon_component;
+mod moon_image_carousel;

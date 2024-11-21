@@ -7,7 +7,7 @@ pub fn PlutoComponent() -> Element {
     let header = "Pluto.";
     let description_text = "Pluto is a dwarf planet located in a distant region of our solar system beyond Neptune known as the Kuiper Belt.";
     let additional_info = "Pluto was long considered our ninth planet, but the International Astronomical Union reclassified Pluto as a dwarf planet in 2006. NASA's New Horizons was the first spacecraft to explore Pluto up close, flying by in 2015. Pluto was discovered in 1930 by astronomer Clyde Tombaugh. It was named by 11-year-old Venetia Burney of Oxford, England.";
-    const PLUTO: Asset = asset!("./assets/pluto.webp");
+    const PLUTO: Asset = asset!("/assets/images/pluto.webp");
 
     rsx! {
         div { class: "relative w-full h-[90vh] flex items-center pl-12 overflow-hidden opacity-0 animate-fadeIn animate-slideUp duration-1000",

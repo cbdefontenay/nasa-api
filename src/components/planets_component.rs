@@ -4,11 +4,12 @@ use crate::components::card_component;
 
 #[component]
 pub fn PlanetsComponent() -> Element {
-    const MARS: Asset = asset!("./assets/marsai.webp");
-    const SUN: Asset = asset!("./assets/sun2.webp");
-    const SATURN: Asset = asset!("./assets/saturn.webp");
-    const NEPTUNE: Asset = asset!("./assets/neptune.webp");
-    const PLUTO: Asset = asset!("./assets/pluto.webp");
+    const MARS: Asset = asset!("./assets/images/marsai.webp");
+    const SUN: Asset = asset!("./assets/images/sun2.webp");
+    const SATURN: Asset = asset!("./assets/images/saturn.webp");
+    const NEPTUNE: Asset = asset!("./assets/images/neptune.webp");
+    const PLUTO: Asset = asset!("./assets/images/pluto.webp");
+    const MOON: Asset = asset!("./assets/images/moon.webp");
     const _: Asset = asset!("./assets/planets.css");
 
     rsx! {
@@ -25,6 +26,11 @@ pub fn PlanetsComponent() -> Element {
                 title: String::from("Discover the Sun"),
                 url: String::from("/planets/sun"),
                 image: SUN,
+            }
+            card_component::CardComponent {
+                title: String::from("Discover the Moon"),
+                url: String::from("/planets/moon"),
+                image: MOON,
             }
             card_component::CardComponent {
                 title: String::from("Discover Saturn"),
