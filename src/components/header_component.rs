@@ -6,6 +6,7 @@ use crate::components::home_component;
 #[component]
 pub fn HeaderComponent() -> Element {
     const LOGO: Asset = asset!("./assets/images/logo.png");
+    const VIDEO: Asset = asset!("./assets/images/header.mp4");
     const _: Asset = asset!("./assets/home.css");
 
     rsx! {
@@ -16,7 +17,7 @@ pub fn HeaderComponent() -> Element {
                 autoplay: "true",
                 muted: "true",
                 r#loop: "loop",
-                src: "https://cdn.pixabay.com/video/2023/01/20/147239-791344486_large.mp4",
+                src: "{VIDEO}",
             }
             div { class: "relative flex items-center justify-center h-full",
                 div { class: "flex flex-col md:flex-row md:justify-between items-center md:items-start w-full md:w-3/4 px-4 space-y-6 md:space-y-0",

@@ -8,19 +8,28 @@ edition = "2021"
 
 [dependencies]
 
-dioxus = { version = "0.6.0-alpha.4", features = ["web", "router"] }
+dioxus = { version = "0.6.0", features = ["web", "router"] }
 serde = { version = "1.0.210", features = ["derive"] }
 # Debug
-dioxus-logger = "0.5.1"
-reqwest = { version = "0.12.7", features = ["json"] }
+dioxus-logger = "0.6.0"
+reqwest = { version = "0.12.9", features = ["json"] }
 getrandom = { version = "0.2.15", features = ["js"] }
-serde_json = "1.0.124"
+serde_json = "1.0.133"
 rand = "0.8.5"
-freyr = "0.1.7"
-
-[build-dependencies]
+freyr = "0.1.8"
 
 [features]
-default = []
-server = ["dioxus/axum"]
+default = ["web"]
 web = ["dioxus/web"]
+
+[profile]
+
+[profile.wasm-dev]
+inherits = "dev"
+opt-level = 1
+
+[profile.server-dev]
+inherits = "dev"
+
+[profile.android-dev]
+inherits = "dev"
