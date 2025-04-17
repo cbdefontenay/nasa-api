@@ -11,7 +11,7 @@ pub fn MoonComponent() -> Element {
     let mut description_moon = use_signal(String::new);
     let header = "The Moon.";
     let description_text = "From lighting up our skies to maintaining a geological record of our solar system’s history, Earth’s closest celestial neighbor plays a pivotal role in the study of our planet and our solar system. ";
-    const MOON: Asset = asset!("/assets/images/moon.webp");
+    const MOON: Asset = asset!("/assets/images/moons.webp");
 
     use_effect(move || {
         let mut title = title.clone();
@@ -45,13 +45,13 @@ pub fn MoonComponent() -> Element {
     });
 
     rsx! {
-        div { class: "relative w-full h-[90vh] flex items-center pl-12 overflow-hidden opacity-0 animate-fadeIn animate-slideUp duration-1000",
+        div { class: "relative w-full h-[90vh] flex items-center pl-12 overflow-hidden",
             img {
-                class: "absolute top-0 left-0 w-full h-full object-cover z-[-1] opacity-0 animate-fadeIn animate-duration-[1200ms]",
+                class: "absolute top-0 left-0 w-full h-full object-cover z-[-1] ",
                 src: "{MOON}",
             }
 
-            div { class: "z-10 max-w-[800px] text-white bg-black bg-opacity-50 p-5 rounded-lg transform translate-y-[50px] opacity-0 animate-fadeIn animate-slideUp animate-duration-[1500ms]",
+            div { class: "z-10 max-w-[800px] text-white bg-black bg-opacity-50 p-5 rounded-lg transform translate-y-[50px]",
 
                 h1 { class: "text-5xl font-bold mb-4", "{header}" }
 
@@ -59,7 +59,7 @@ pub fn MoonComponent() -> Element {
                 div { class: "flex flex-row justify-around items-center mt-5 mb-5 ml-4",
                     p { class: "text-white text-2xl mx-5",
                         span { class: "text-[#288bff] text-4xl", "Next full Moon: " }
-                        "December 15, 2024"
+                        "May 12, 2025"
                     }
                     p { class: "text-white text-2xl mx-5",
                         span { class: "text-[#288bff] text-4xl", "Current Phase (UTC): " }

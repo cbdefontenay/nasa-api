@@ -13,3 +13,4 @@ build/build.rs
 **/*.rs.bk
 /src/components/env.rs
 .env
+/tailwindcss.exe

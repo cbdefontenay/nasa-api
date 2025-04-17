@@ -21,7 +21,11 @@ pub fn MoonImageCarousel() -> Element {
         div {
             class: "mb-14",
             h1 { class: "text-2xl md:text-3xl font-bold text-center mb-10", "Discover the Moon in Images:" }
-            CarouselWithTimer { items, alt, class: Some(String::from("w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-lg hover:shadow-md hover:shadow-slate-300")) }
+            CarouselWithTimer { 
+                items, 
+                alt, 
+                timer_seconds: 7,
+                class: Some(String::from("w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-lg hover:shadow-md hover:shadow-slate-300")) }
         }
     }
 }
